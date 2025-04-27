@@ -20,11 +20,11 @@ const optimizedImage = await getOptimizedImage(landingImage)
     <div class="cs-container">
       <div class="cs-flex-group">
         <img src="/assets/images/NWS-light-shadow.png" alt="Nakamura Web Services Logo" width="120" height="120">
-        <h1 class="cs-title">create & elevate your web presence and digital products</h1> <!-- Add Merriweather sans/Merriweather fonts -->
+        <h1 class="cs-title">create & elevate<br>your web presence<br>and digital products</h1> <!-- Add Merriweather sans/Merriweather fonts -->
         <p class="cs-text">
           Hawai'i-based web developer helping nonprofits, entrepreneurs, educators, and other changemakers create and maintain an impactful web presence and design digital solutions.
         </p>
-        <a href="/about" class="cs-button-solid">Explore More</a>
+        <a href="/about" class="cs-button-solid">Contact</a>
       </div>
     </div>
 
@@ -297,6 +297,13 @@ const optimizedImage = await getOptimizedImage(landingImage)
 <style lang="less">
   /* STYLES FOR ABOVE THE FOLD */
 
+  @media (min-width: 1024px) {
+  #hero .cs-flex-group {
+    margin-top:-8rem !important;
+  }
+}
+
+
   /*-- -------------------------- -->
 <---           Hero             -->
 <--- -------------------------- -*/
@@ -330,8 +337,8 @@ const optimizedImage = await getOptimizedImage(landingImage)
           content: "";
           width: 100%;
           height: 100%;
-          background: #8a7062;
-          opacity: 0.55;
+          background: #645c58;
+          opacity: 0.7;
           display: block;
           position: absolute;
           top: 0;
@@ -365,9 +372,9 @@ const optimizedImage = await getOptimizedImage(landingImage)
       }
 
       .cs-flex-group {
-        width: 80vw;
+        width: 90vw;
         /* 464px - 562px */
-        max-width: clamp(29em, 60vw, 35.125em);
+        max-width: clamp(32em, 70vw, 42em);
         margin: auto;
         /* 60px - 220px */
         margin-bottom: clamp(3.75em, 15.5vw, 13.75em);
@@ -388,10 +395,12 @@ const optimizedImage = await getOptimizedImage(landingImage)
         text-align: center;
         width: 100%;
         color: var(--bodyTextColorWhite);
+        font-size: clamp(2.5rem, 4vw, 4rem);
       }
 
       .cs-text {
         text-align: center;
+        font-size: clamp(1rem, 2vw, 1.25rem);
         /* 32px - 40px */
         margin: 0 auto clamp(2rem, 4vw, 2.5rem) 0;
         /* 40px - 48px */
