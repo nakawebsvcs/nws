@@ -49,90 +49,36 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
  
 
-  <!-- ============================================ -->
-  <!--                 Side By Side                 -->
-  <!-- ============================================ -->
+<!-- ============================================ -->
+<!--             Side By Side Reverse             -->
+<!-- ============================================ -->
 
-  <section id="sbs">
+<section id="sbsr-1011">
     <div class="cs-container">
-      <!-- Left Image Section -->
-      <div class="cs-left">
-        <picture class="cs-picture cs-picture1">
-          <source
-            media="(max-width: 600px)"
-            srcset="/assets/images/cabinets2-m.jpg"
-          />
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/cabinets2.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/cabinets2.jpg"
-            alt="cabinets"
-            loading="lazy"
-            width="400"
-            height="563"
-          />
-        </picture>
-        <picture class="cs-picture cs-picture2">
-          <source
-            media="(max-width: 600px)"
-            srcset="/assets/images/construction-m.jpg"
-          />
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/construction.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/construction.jpg"
-            alt="house"
-            loading="lazy"
-            width="400"
-            height="563"
-          />
-        </picture>
-      </div>
-      <!-- Right Content Section-->
-      <div class="cs-right">
-        <span class="cs-topper">About Us</span>
-        <h2 class="cs-title">About Company Title</h2>
-        <p class="cs-text">
-          In consequat tincidunt turpis sit amet imperdiet. Praesent Class
-          officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
-          et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
-          nonatourean olei aptent taciti sociosqu ad litora torquent per.
-        </p>
-        <p class="cs-text">
-          In consequat tincidunt turpis sit amet imperdiet. Praesent Class
-          officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
-          et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
-          nonatourean olei aptent taciti sociosqu ad litora torquent per.
-        </p>
-        <div class="cs-flex-group">
-          <p class="cs-flex-p">
-            In consequat tincidunt turpis sit amet imperdiet. Praesent Classei
-            consequat tincidunt turpis sit amet imperdiet for mind.
-          </p>
-          <span class="cs-name">Justin Time</span>
-          <span class="cs-job">CEO-Founder</span>
-          <img
-            class="cs-quote-icon"
-            loading="lazy"
-            decoding="async"
-            src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"
-            alt="gavel"
-            width="136"
-            height="77"
-          />
+        <div class="cs-image-group">
+            <picture class="cs-picture">
+                <!--Desktop-->
+                <source media="(min-width: 1024px)" srcset="/assets/images/JessicaNakamura.png">
+                <!--Tablet-->
+                <source media="(min-width: 601px)" srcset="/assets/images/JessicaNakamura.png">
+                <!--Mobile-->
+                <source media="(max-width: 600px)" srcset="/assets/images/JessicaNakamura.png">
+                <img loading="lazy" decoding="async" src="/assets/images/JessicaNakamura.png" alt="Jessica Nakamura, Hawai'i Web Developer" width="522" height="461">
+            </picture>
         </div>
-        <a href="/about" class="cs-button-solid">More About Us</a>
-      </div>
+        <div class="cs-content">
+            <h2 class="cs-title">About Jessica Nakamura</h2>
+            <p class="cs-text">
+              <em>
+                Jessica is of mixed Filipina ancestry and grew up in Pennsylvania as the oldest of six. She became a first-generation college student, studying social science at her local community college and going on to complete a Bachelor of Arts at the California Institute of Integral Studies. In 2015, Jessica enrolled in a work exchange program that brought her to Lahaina on the island of Maui. Jessica has spent the majority of her career working in various nonprofit services, including public libraries, the Head Start program, affordable housing, and financial literacy.
+                <!--Creates the space between p tags on mobile-->
+                <span class="cs-spacer"></span>
+                She has a deep commitment to people, community, equity, and education, which she now combines with her love of web development to create websites, online platforms, mobile apps, and tools that serve the greater good. Jessica has been building websites, publishing newsletters, and learning new computer things since her family got their first PC in the 1990s. In 2024, she decided to turn her skills and passions into self-employment and launched Nakamura Web Services. She looks forward to serving the Hawai'i community for many years to come!</em>
+            </p>
+        </div>
     </div>
-  </section>
+</section>
+                                
 
   <!-- ============================================ -->
   <!--            Extra Content To Rank             -->
@@ -498,164 +444,179 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
   /* PAGE-SPECIFIC STYLES FOR THE HOME PAGE */
 
-  /*-- -------------------------- -->
-<---       Side By Side         -->
+/*-- -------------------------- -->
+<---    Side By Side Reverse    -->
 <--- -------------------------- -*/
 
-  /* Mobile - 360px */
-  @media only screen and (min-width: 0em) {
-    #sbs {
-      padding: var(--sectionPadding);
-      background-color: #086173;
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #sbsr-1011 {
+        padding: var(--sectionPadding);
+        background-color: #086173;
 
-      .cs-container {
-        width: 100%;
-        max-width: (1280/16rem);
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        row-gap: (40/16rem);
-      }
-
-      .cs-left {
-        /* scaling the font size with the view width */
-        font-size: ~"min(2.31vw, .7em)";
-        /* using ems so we can use font size to scale the whole section */
-        width: (631/16em);
-        height: (636/16em);
-        position: relative;
-      }
-
-      .cs-picture {
-        border-radius: (24/16em);
-        display: block;
-        position: absolute;
-        /* clips img tag corners */
-        overflow: hidden;
-        img {
-          width: 100%;
-          height: 100%;
-          /* makes image act like a background image */
-          object-fit: cover;
-          position: absolute;
-          top: 0;
-          left: 0;
+        .cs-container {
+            width: 100%;
+            max-width: (800/16rem);
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(3rem, 6vw, 4rem);
         }
-      }
 
-      .cs-picture1 {
-        width: (522/16em);
-        height: (581/16em);
-        top: 0;
-        left: 0;
-      }
+        .cs-image-group {
+            width: 100%;
+            max-width: (300/16rem); /* Reduced size */
+            display: flex;
+            justify-content: center;
+            order: 1;
+        }
 
-      .cs-picture2 {
-        width: (414/16em);
-        height: (400/16em);
-        background-color: #fff;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px;
-        /* 6px - 12px */
-        border: clamp(0.375em, 1.5vw, 0.75em) solid #fff;
-        right: 0;
-        bottom: 0;
-      }
+        .cs-picture {
+            width: 100%;
+            height: auto;
+            display: block;
+            position: relative;
+            
+            img {
+                /* Critical change: Remove absolute positioning */
+                position: static;
+                display: block;
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+        }
 
-      .cs-right {
-        max-width: (542/16rem);
-        margin: auto;
-      }
+        .cs-content {
+            text-align: center;
+            width: 100%;
+            max-width: (700/16rem);
+            margin-top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            order: 2;
+        }
 
-      .cs-topper {
-        text-align: left;
-        margin-bottom: (4/16rem);
+        .cs-title,
+        .cs-text {
+            color: var(--bodyTextColorWhite);
+        }
+
+        .cs-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: (1.5/16rem);
+
+            &::after {
+                content: "";
+                display: block;
+                width: (3rem); /* 3rem wide divider */
+                height: 3px; /* 3px thick */
+                background-color: white;
+                margin: 2rem auto;
+            }
+        }
+
+        .cs-text {
+            margin-bottom: (16/16rem);
+            opacity: 0.8;
+            text-align: left;
+            &:last-of-type {
+                margin-bottom: (32/16rem);
+            }
+        }
+
+        .cs-spacer {
+            width: 100%;
+            height: clamp(1rem, 3vw, 1.5rem);
+            display: block;
+        }
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #sbsr-1011 {
+        .cs-container {
+            align-items: center;
+            max-width: (900/16rem);
+            flex-direction: column;
+        }
+
+        .cs-image-group {
+            max-width: (350/16rem); /* Reduced size */
+            order: 1;
+        }
+
+        .cs-content {
+            max-width: (800/16rem);
+            order: 2;
+        }
+
+        .cs-text {
+            columns: 2;
+            column-gap: (24/16rem);
+        }
+
+         .cs-title {
+            &::after {
+                width: 4rem; /* Slightly wider on tablet */
+                margin: 2rem auto;
+            }
+        }
+
+        .cs-spacer {
+            display: none;
+        }
+    }
+}
+
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #sbsr-1011 {
+        .cs-container {
+            max-width: (1280/16rem);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(3rem, 6vw, 4rem);
+        }
+
+        .cs-image-group {
+            max-width: (400/16rem); /* Reduced size */
+            display: flex;
+            justify-content: center;
+            position: relative;
+            order: 1;
+        }
+
+        .cs-content {
+            flex: none;
+            width: 100%;
+            max-width: (900/16rem);
+            order: 2;
+        }
+        
+        .cs-text {
+            columns: 2;
+            column-gap: (40/16rem);
+        }
+
+        .cs-title {
+        margin-top: -1rem;
+        margin-bottom: 2rem;
       }
 
       .cs-title {
-        text-align: left;
-        max-width: (800/16rem);
-      }
-
-      .cs-text {
-        text-align: left;
-        max-width: (750/16rem);
-        margin-bottom: (16/16rem);
-
-        &:last-of-type {
-          margin-bottom: (32/16rem);
+            &::after {
+                width: 5rem; /* Wider on desktop */
+                margin: 2rem auto;
+            }
         }
-      }
-
-      .cs-flex-group {
-        /* 16px - 32px */
-        padding: clamp(1rem, 3vw, 2rem);
-        background-color: #f7f7f7;
-        border-radius: (16/16rem);
-        position: relative;
-      }
-
-      .cs-flex-p {
-        /* 14px - 16px */
-        font-size: clamp(0.875rem, 1.5vw, 1rem);
-        line-height: 1.5em;
-        margin: 0 0 (16/16rem);
-        color: #353535;
-      }
-
-      .cs-name {
-        font-size: (16/16rem);
-        font-weight: bold;
-        line-height: 1.2em;
-        text-transform: uppercase;
-        margin: 0 0 (4/16rem);
-        color: var(--headerColor);
-        display: block;
-      }
-
-      .cs-job {
-        font-size: (14/16rem);
-        line-height: 1.5em;
-        color: #353535;
-        display: block;
-      }
-
-      .cs-quote-icon {
-        /* 60px - 136px */
-        width: clamp(3.75rem, 10vw, 8.5rem);
-        height: auto;
-        position: absolute;
-        /* 16px - 32px */
-        right: clamp(1rem, 4vw, 2rem);
-        bottom: (0/16rem);
-      }
-
-      .cs-button-solid {
-        margin-top: (32/16rem);
-      }
     }
-  }
-
-  /* Desktop - 1024px */
-  @media only screen and (min-width: 64em) {
-    #sbs {
-      .cs-container {
-        flex-flow: row;
-        justify-content: space-between;
-        gap: (52/16rem);
-      }
-
-      .cs-left {
-        font-size: ~"min(1.2vw, 1em)";
-        flex: none;
-      }
-
-      .cs-right {
-        margin: 0;
-      }
-    }
-  }
+}
 
   /*-- -------------------------- -->
 <---       Side By Side         -->
@@ -808,51 +769,6 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
       .cs-right {
         margin: 0;
-      }
-    }
-  }
-
-  /* Dark Mode */
-  @media only screen and (min-width: 0em) {
-    body.dark-mode {
-      #sbs-r {
-        .cs-left {
-          &:before,
-          &:after {
-            background: var(--accent);
-          }
-        }
-
-        .cs-picture2 {
-          background-color: var(--dark);
-          /* 6px - 12px */
-          border: clamp(0.375em, 1.5vw, 0.75em) solid var(--dark);
-        }
-
-        .cs-topper {
-          color: var(--primaryLight);
-        }
-
-        .cs-title,
-        .cs-text,
-        .cs-h3,
-        .cs-flex-p,
-        .cs-name {
-          color: var(--bodyTextColorWhite);
-        }
-
-        .cs-flex-group {
-          background-color: var(--accent);
-        }
-
-        .cs-job {
-          color: var(--bodyTextColorWhite);
-          opacity: 0.8;
-        }
-
-        .cs-quote-icon {
-          opacity: 0.2;
-        }
       }
     }
   }
