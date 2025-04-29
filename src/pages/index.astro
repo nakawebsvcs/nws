@@ -76,7 +76,14 @@ const optimizedImage = await getOptimizedImage(landingImage)
                 <span class="cs-spacer"></span>
                 She has a deep commitment to people, community, equity, and education, which she now combines with her love of web development to create websites, online platforms, mobile apps, and tools that serve the greater good. Jessica has been building websites, publishing newsletters, and learning new computer things since her family got their first PC in the 1990s. In 2024, she decided to turn her skills and passions into self-employment and launched Nakamura Web Services. She looks forward to serving the Hawai'i community for many years to come!
             </p>
-            <span class="cs-subtitle" style="margin: 1rem; font-size: 1.2rem;"><strong>Educate. Connect. Inspire.</strong></span>
+            <!-- Replace the existing subtitle span with this: -->
+<div class="cs-subtitle animated-words" style="margin: 1rem; font-size: 1.2rem;">
+    <strong>
+        <span class="animate-word">Educate.</span>
+        <span class="animate-word">Connect.</span>
+        <span class="animate-word">Inspire.</span>
+    </strong>
+</div>
         </div>
         
     </div>
@@ -1379,6 +1386,15 @@ const optimizedImage = await getOptimizedImage(landingImage)
     /* Slow down the animation by increasing duration from 0.6s to 1s */
     transition: opacity 1s ease-out, transform 1s ease-out;
   }
+
+  .animated-words {
+  .animate-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+}
   
   .skills-slide-left {
     opacity: 0;
@@ -1454,10 +1470,20 @@ const optimizedImage = await getOptimizedImage(landingImage)
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+        // Special handling for the animated words
+          if (entry.target.classList.contains('animated-words')) {
+            const words = entry.target.querySelectorAll('.animate-word');
+            words.forEach((word, index) => {
+              // Set a delay for each word
+              setTimeout(() => {
+                word.classList.add("visible");
+              }, index * 800); // 800ms between words
+            });
           }
-        });
-      },
-      {
+        }
+      });
+    },
+    {
         threshold: 0.1,
       }
     );
