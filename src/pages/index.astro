@@ -1427,6 +1427,41 @@ const optimizedImage = await getOptimizedImage(landingImage)
     opacity: 1 !important;
     transform: translateY(0) !important;
   }
+
+  /* Mobile-specific animation overrides */
+  @media only screen and (max-width: 767px) {
+    /* Disable all animations on mobile */
+    .fade-in-scroll,
+    .skills-slide-left,
+    .skills-slide-right,
+    .animated-words .animate-word,
+    #hero .cs-flex-group > * {
+      /* Make everything visible immediately */
+      opacity: 1 !important;
+      transform: none !important;
+      
+      /* Disable transitions completely */
+      transition: none !important;
+      transition-delay: 0s !important;
+    }
+    
+    /* Ensure hero elements are visible without waiting for JS */
+    #hero .cs-flex-group > * {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    
+    /* Ensure all "visible" class elements appear immediately */
+    .visible {
+      opacity: 1 !important;
+      transform: translate(0, 0) !important;
+    }
+    
+    /* Reset any animation delays */
+    [style*="transition-delay"] {
+      transition-delay: 0s !important;
+    }
+  }
 </style>
 
 <script is:inline>
@@ -1527,5 +1562,6 @@ const optimizedImage = await getOptimizedImage(landingImage)
       observer.observe(card);
     });
   }
+
 </script>
 
