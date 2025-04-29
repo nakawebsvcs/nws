@@ -21,6 +21,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
       <div class="cs-flex-group">
         <img src="/assets/images/NWS-light-shadow.png" alt="Nakamura Web Services Logo" width="120" height="120">
         <h1 class="cs-title">create & elevate<br>your web presence<br>and digital products</h1>
+        <div class="cs-divider"></div>
         <p class="cs-text">
           Hawaiʻi-based web developer helping nonprofits, entrepreneurs, educators, and other changemakers create and maintain an impactful web presence and design digital solutions.
         </p>
@@ -32,9 +33,9 @@ const optimizedImage = await getOptimizedImage(landingImage)
     <picture class="cs-picture">
       <source
         media="(max-width: 600px)"
-        srcset="/assets/images/landing.jpg"
+        srcset="/assets/images/landing-1.png"
       />
-      <source media="(min-width: 601px)" srcset="/assets/images/landing.jpg" />
+      <source media="(min-width: 601px)" srcset="/assets/images/landing-1.png" />
       <img
         aria-hidden="true"
         decoding="async"
@@ -402,7 +403,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
   @media (min-width: 1024px) {
   #hero .cs-flex-group {
-    margin-top:-8rem !important;
+    margin-top:-9rem !important;
   }
 }
 
@@ -505,11 +506,20 @@ const optimizedImage = await getOptimizedImage(landingImage)
         text-align: center;
         font-size: clamp(1rem, 2vw, 1.25rem);
         /* 32px - 40px */
-        margin: 0 auto clamp(2rem, 4vw, 2.5rem) 0;
-        /* 40px - 48px */
-        margin-bottom: clamp(2.5rem, 4vw, 3rem);
+        margin-top: 1rem; /* Add top margin */
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: clamp(2.5rem, 4vw, 3rem);
         color: var(--bodyTextColorWhite);
       }
+
+      .cs-divider {
+    width: 3rem;
+    height: 0.25rem;
+    background-color: var(--primary); /* Uses your primary color variable */
+    margin: 1rem auto; /* Equal space above and below */
+    display: block; /* Ensure it's a block element */
+  }
 
       .cs-button-solid {
         line-height: clamp(2.875em, 5.5vw, 3.5em);
@@ -590,7 +600,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
   /* Desktop Parallax Effect - 1300px */
   @media only screen and (min-width: 81.25em) {
     #hero {
-      background: url("/assets/images/landing.jpg");
+      background: url("/assets/images/landing-1.png");
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -1358,4 +1368,138 @@ const optimizedImage = await getOptimizedImage(landingImage)
       }
     }
   }
+
+  /*-- -------------------------- -->
+<---         Animation Styles      -->
+<--- -------------------------- -*/
+
+  .fade-in-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    /* Slow down the animation by increasing duration from 0.6s to 1s */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  
+  .skills-slide-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    /* Slow down the animation */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  
+  .skills-slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+    /* Slow down the animation */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+
+   .visible {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
+  }
+  
+  /* Hide hero elements by default */
+  #hero .cs-flex-group > * {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  }
+  
+  /* This class will be added by JavaScript to trigger the animation */
+  .hero-animate {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
 </style>
+
+<script is:inline>
+  function animateHero() {
+    // Wait a moment to ensure the page is fully loaded
+    setTimeout(() => {
+      // Get all direct children of the flex-group
+      const heroElements = document.querySelectorAll("#hero .cs-flex-group > *");
+      
+      // Animate each element with a delay
+      heroElements.forEach((el, index) => {
+        // Set a delay for each element
+        el.style.transitionDelay = `${index * 300}ms`;
+        
+        // Add the animation class
+        el.classList.add("hero-animate");
+      });
+    }, 300);
+  }
+
+  // Run on initial page load
+  document.addEventListener('DOMContentLoaded', animateHero);
+  
+  // Run after Astro page transitions
+  document.addEventListener('astro:page-load', animateHero);
+</script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    setupAnimations();
+  });
+
+  // Also handle Astro's view transitions
+  document.addEventListener('astro:page-load', () => {
+    setupAnimations();
+  });
+
+  function setupAnimations() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+
+    // About section
+    const aboutElements = document.querySelectorAll(
+      "#sbsr-1011 img, #sbsr-1011 .cs-title, #sbsr-1011 .cs-divider, #sbsr-1011 .cs-text, #sbsr-1011 .cs-subtitle"
+    );
+    aboutElements.forEach((el) => {
+      el.classList.add("fade-in-scroll");
+      observer.observe(el);
+    });
+
+    // Skills section
+    const skillsColumns = document.querySelectorAll(
+      "#skills-281 .cs-column"
+    );
+    if (skillsColumns.length >= 2) {
+      skillsColumns[0].classList.add("skills-slide-left");
+      skillsColumns[1].classList.add("skills-slide-right");
+      observer.observe(skillsColumns[0]);
+      observer.observe(skillsColumns[1]);
+    }
+
+    // Services section animations
+    const serviceCards = document.querySelectorAll("#services-281 .cs-item");
+    serviceCards.forEach((card, index) => {
+      card.classList.add("fade-in-scroll");
+      // Slow down the staggered animation by increasing delay
+      card.style.transitionDelay = `${index * 0.3}s`;
+      observer.observe(card);
+    });
+
+    // Portfolio cards animation
+    const portfolioCards = document.querySelectorAll("#portfolio-1716 .cs-item");
+    portfolioCards.forEach((card, index) => {
+      card.classList.add("fade-in-scroll");
+      // Slow down the staggered animation by increasing delay
+      card.style.transitionDelay = `${index * 0.3}s`;
+      observer.observe(card);
+    });
+  }
+</script>
+
