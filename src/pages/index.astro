@@ -20,9 +20,9 @@ const optimizedImage = await getOptimizedImage(landingImage)
     <div class="cs-container">
       <div class="cs-flex-group">
         <img src="/assets/images/NWS-light-shadow.png" alt="Nakamura Web Services Logo" width="120" height="120">
-        <h1 class="cs-title">create & elevate<br>your web presence<br>and digital products</h1> <!-- Add Merriweather sans/Merriweather fonts -->
+        <h1 class="cs-title">create & elevate<br>your web presence<br>and digital products</h1>
         <p class="cs-text">
-          Hawai'i-based web developer helping nonprofits, entrepreneurs, educators, and other changemakers create and maintain an impactful web presence and design digital solutions.
+          Hawaiʻi-based web developer helping nonprofits, entrepreneurs, educators, and other changemakers create and maintain an impactful web presence and design digital solutions.
         </p>
         <a href="/about" class="cs-button-solid">Contact</a>
       </div>
@@ -75,7 +75,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
                 <span class="cs-spacer"></span>
                 She has a deep commitment to people, community, equity, and education, which she now combines with her love of web development to create websites, online platforms, mobile apps, and tools that serve the greater good. Jessica has been building websites, publishing newsletters, and learning new computer things since her family got their first PC in the 1990s. In 2024, she decided to turn her skills and passions into self-employment and launched Nakamura Web Services. She looks forward to serving the Hawai'i community for many years to come!
             </p>
-            <span class="cs-subtitle" style="margin: 1rem;"><strong>Educate. Connect. Inspire.</strong></span>
+            <span class="cs-subtitle" style="margin: 1rem; font-size: 1.2rem;"><strong>Educate. Connect. Inspire.</strong></span>
         </div>
         
     </div>
@@ -145,10 +145,47 @@ const optimizedImage = await getOptimizedImage(landingImage)
     <div class="cs-container">
         <div class="cs-content">
             <h2 class="cs-title">My Work</h2>
-            <div class="cs-divider"></div>
+            <div class="cs-divider" style="margin-bottom: 5rem;"></div>
         </div>
         <ul class="cs-card-group">
-            <!-- Kapehe Hula Card -->
+            
+            <!-- HACBED Card -->
+            <li class="cs-item">
+                <div class="cs-card">
+                    <div class="cs-image-wrapper">
+                        <img loading="lazy" decoding="async" src="/assets/images/hacbed-site.png" alt="Espresso Coffee" width="480" height="320">
+                    </div>
+                    <div class="cs-card-body">
+                        <h3 class="cs-card-title">HACBED</h3>
+                        <p class="cs-card-text">
+                            Website refresh for the Hawaiʻi Alliance for Community-Based Economic Development. This content-rich site features blog and project pages.
+                        </p>
+                        <a href="https://hacbed.org/" target="_blank" class="cs-card-link">
+                            Visit Site <i class="bi-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            
+            <!-- MA HA Wellness Card -->
+            <li class="cs-item">
+                <div class="cs-card">
+                    <div class="cs-image-wrapper">
+                        <img loading="lazy" decoding="async" src="/assets/images/maha-wellness-site.png" alt="Pocket Blogger" width="480" height="320">
+                    </div>
+                    <div class="cs-card-body">
+                        <h3 class="cs-card-title">MA HA Wellness</h3>
+                        <p class="cs-card-text">
+                            Website for a lomi lomi, dance, and postpartum care practitioner. Features individual page styles for each service area.
+                        </p>
+                        <a href="https://trinidadwellness.love/" target="_blank" class="cs-card-link">
+                            Visit Site <i class="bi-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+             <!-- Kapehe Hula Card -->
             <li class="cs-item">
                 <div class="cs-card">
                     <div class="cs-image-wrapper">
@@ -160,42 +197,6 @@ const optimizedImage = await getOptimizedImage(landingImage)
                             Single-page website for Halau Hula Malani O Kapehe featuring multiple sections and fixed navigation style.
                         </p>
                         <a href="https://kapehehula.web.app/" target="_blank" class="cs-card-link">
-                            Visit Site <i class="bi-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            
-            <!-- Espresso Coffee Card -->
-            <li class="cs-item">
-                <div class="cs-card">
-                    <div class="cs-image-wrapper">
-                        <img loading="lazy" decoding="async" src="/assets/images/espresso-site.png" alt="Espresso Coffee" width="480" height="320">
-                    </div>
-                    <div class="cs-card-body">
-                        <h3 class="cs-card-title">Esprésso Coffee</h3>
-                        <p class="cs-card-text">
-                            Modern multi-page coffee shop website with map and contact features, about page, and menu page.
-                        </p>
-                        <a href="https://breakout2coffeeshop.web.app/" target="_blank" class="cs-card-link">
-                            Visit Site <i class="bi-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            
-            <!-- Pocket Blogger Card -->
-            <li class="cs-item">
-                <div class="cs-card">
-                    <div class="cs-image-wrapper">
-                        <img loading="lazy" decoding="async" src="/assets/images/pocketblogger-site.png" alt="Pocket Blogger" width="480" height="320">
-                    </div>
-                    <div class="cs-card-body">
-                        <h3 class="cs-card-title">Pocket Blogger</h3>
-                        <p class="cs-card-text">
-                            A simple React web app for writers. Features theme picker and past entries saved in local device storage.
-                        </p>
-                        <a href="https://pocketblogger.web.app/" target="_blank" class="cs-card-link">
                             Visit Site <i class="bi-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -600,6 +601,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
   /* PAGE-SPECIFIC STYLES FOR THE HOME PAGE */
 
+
 /*-- -------------------------- -->
 <---    Side By Side Reverse    -->
 <--- -------------------------- -*/
@@ -802,7 +804,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
 #services-281 {
     padding: var(--sectionPadding);
-    background-color: #fff; /* Or any color that matches your theme */
+    background-color: #fff;
 
     .cs-container {
       width: 100%;
@@ -823,6 +825,9 @@ const optimizedImage = await getOptimizedImage(landingImage)
     }
 
     .cs-title {
+      font-weight: 500;
+      font-size: 2rem;
+      line-height: 1.8rem;
       text-align: center;
       margin-bottom: 0.5rem;
     }
@@ -842,7 +847,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: (28/16rem);
+      gap: (32/16rem);
 
       @media only screen and (min-width: 48rem) {
         flex-direction: row;
@@ -887,14 +892,16 @@ const optimizedImage = await getOptimizedImage(landingImage)
     }
 
     .cs-h3 {
-      font-size: (20/16rem);
-      line-height: 1.5em;
+      font-weight: 500;
+      font-size: (24/16rem);
+      line-height: 1.81em;
       margin: 0;
       margin-bottom: 0.75rem;
       color: var(--headerColor);
     }
 
     .cs-item-text {
+      font-family: 'Merriweather', serif;
       font-size: (16/16rem);
       line-height: 1.5em;
       margin: 0;
@@ -928,6 +935,8 @@ const optimizedImage = await getOptimizedImage(landingImage)
     }
     
     .cs-title {
+      font-weight: 500;
+      font-size: 2rem;
       text-align: center;
       margin-top: 0;
       margin-bottom: (16/16rem);
@@ -944,10 +953,10 @@ const optimizedImage = await getOptimizedImage(landingImage)
     .cs-card-group {
       width: 100%;
       margin: 0;
-      padding: 0;
+      padding: 2.8rem;
       display: grid;
       grid-template-columns: 1fr;
-      gap: (24/16rem);
+      gap: (50/16rem);
       justify-content: center;
       
       @media only screen and (min-width: 48rem) {
@@ -970,47 +979,62 @@ const optimizedImage = await getOptimizedImage(landingImage)
     
     .cs-card {
       height: 100%;
-      background-color: #fff;
-      border-radius: (4/16rem);
-      overflow: hidden;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: (16/16rem);
+    overflow: hidden;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
       
-      &:hover {
-        transform: translateY(-5px);
+      .cs-image-wrapper img {
+        transform: scale(1.05);
       }
     }
+  }
     
     .cs-image-wrapper {
       width: 100%;
-      height: auto;
-      overflow: hidden;
-      
-      img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.3s ease;
-      }
+    position: relative;
+    padding-top: 90%; /* This creates the aspect ratio (height/width) */
+    overflow: hidden;
+    
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
     }
+  }
     
     .cs-card-body {
       padding: (24/16rem);
+    flex: 1;lex: 1;
+    display: flex;
+    flex-direction: column;
     }
     
     .cs-card-title {
       font-size: (20/16rem);
       margin-top: 0;
       margin-bottom: (12/16rem);
-      color: var(--headerColor);
+      color: var(--primary);
     }
     
     .cs-card-text {
+      font-family: 'Merriweather', serif;
       font-size: (16/16rem);
       line-height: 1.5;
       color: var(--bodyTextColor);
       margin-bottom: (16/16rem);
+      flex: 1;
     }
     
     .cs-card-link {
@@ -1074,6 +1098,8 @@ const optimizedImage = await getOptimizedImage(landingImage)
     }
     
     .cs-title {
+      font-weight: 500;
+      font-size: 2rem;
       color: #fff;
       margin-top: 0;
       margin-bottom: (16/16rem);
@@ -1094,6 +1120,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
     }
     
     .cs-skill-item {
+      font-family: 'Merriweather', serif;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1258,6 +1285,8 @@ const optimizedImage = await getOptimizedImage(landingImage)
     }
     
     .cs-title {
+      font-weight: 500;
+      font-size: 2rem;
       margin-top: 0;
       margin-bottom: (16/16rem);
     }
@@ -1291,9 +1320,9 @@ const optimizedImage = await getOptimizedImage(landingImage)
     }
     
     .cs-email-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-size: (20/16rem);
+      font-family: 'Merriweather', serif;
+      color: #F4623A;
+      font-size: (18/16rem);
       font-weight: 500;
       transition: color 0.3s;
       

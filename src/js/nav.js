@@ -29,7 +29,7 @@ function ariaExpanded() {
 
 document.addEventListener("scroll", (e) => {
   const scroll = document.documentElement.scrollTop;
-  if (scroll >= 40) {
+  if (scroll >= 10) {
     document.querySelector("body").classList.add("scroll");
   } else {
     document.querySelector("body").classList.remove("scroll");
