@@ -46,3 +46,26 @@ for (const item of dropDowns) {
   };
   item.addEventListener("click", onClick);
 }
+
+// Add event listeners to all navigation links to close mobile menu when clicked
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all navigation links
+  const navLinks = document.querySelectorAll('#cs-navigation .cs-li-link');
+  
+  // Add click event listener to each link
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      // Only close the menu if it's currently open (has cs-active class)
+      if (CSnavbarMenu.classList.contains('cs-active')) {
+        // Remove active classes
+        CShamburgerMenu.classList.remove('cs-active');
+        CSnavbarMenu.classList.remove('cs-active');
+        CSbody.classList.remove('cs-open');
+        
+        // Update aria-expanded
+        const csUL = document.querySelector("#cs-expanded");
+        csUL.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+});
