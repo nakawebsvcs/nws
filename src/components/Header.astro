@@ -45,6 +45,11 @@ import navData from "../data/navData.json";
                             Reviews
                         </a>
                     </li>
+                     <li class="cs-li">
+                        <a href="/#faq-351" class="cs-li-link" data-section="faq-351">
+                            FAQ
+                        </a>
+                    </li>
                     <li class="cs-li">
                         <a href="/#contact-281" class="cs-li-link" data-section="contact-281">
                             Contact
@@ -57,92 +62,102 @@ import navData from "../data/navData.json";
 </header>
 
 <script>
-    // Function to handle active link state based on hash or scroll position
-    function updateActiveNavLink() {
-        // Get all navigation links
-        const navLinks = document.querySelectorAll('.cs-li-link:not(.nws)');
-        
-        // Get current hash without the # symbol
-        const currentHash = window.location.hash.substring(1);
-        
-        // If there's a hash, set active based on hash
-        if (currentHash) {
-            navLinks.forEach(link => {
-                const section = link.getAttribute('data-section');
-                if (currentHash === section) {
-                    link.classList.add('cs-active');
-                } else {
-                    link.classList.remove('cs-active');
-                }
-            });
-        } 
-        // If no hash, check scroll position
-        else {
-            // Get all sections by their IDs
-            const sections = [];
-            
-            // Collect all sections referenced in the navigation
-            navLinks.forEach(link => {
-                const sectionId = link.getAttribute('data-section');
-                if (sectionId) {
-                    const section = document.getElementById(sectionId);
-                    if (section) {
-                        sections.push(section);
-                    }
-                }
-            });
-            
-            // If we have sections to check
-            if (sections.length > 0) {
-                // Find which section is most visible in the viewport
-                let currentSection = null;
-                let maxVisibleHeight = 0;
-                
-                sections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    // Calculate how much of the section is visible in the viewport
-                    const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-                    
-                    // If this section has more visible area than previous ones
-                    if (visibleHeight > maxVisibleHeight && visibleHeight > 0) {
-                        maxVisibleHeight = visibleHeight;
-                        currentSection = section.id;
-                    }
-                });
-                
-                // Update active link based on current section
-                if (currentSection) {
-                    navLinks.forEach(link => {
-                        if (link.getAttribute('data-section') === currentSection) {
-                            link.classList.add('cs-active');
-                        } else {
-                            link.classList.remove('cs-active');
-                        }
-                    });
-                }
+   // Function to handle active link state based on hash or scroll position
+function updateActiveNavLink() {
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('.cs-li-link:not(.nws)');
+    
+    // Get current hash without the # symbol
+    const currentHash = window.location.hash.substring(1);
+    
+    // Clear all active states first
+    navLinks.forEach(link => {
+        link.classList.remove('cs-active');
+    });
+    
+    // If there's a hash, set active based on hash
+    if (currentHash) {
+        navLinks.forEach(link => {
+            const section = link.getAttribute('data-section');
+            if (currentHash === section) {
+                link.classList.add('cs-active');
             }
-        }
-    }
+        });
+        
+        // After a short delay, switch back to scroll-based highlighting
+        setTimeout(() => {
+            // Remove the hash without causing a page jump
+            if (history.pushState) {
+                history.pushState(null, null, window.location.pathname);
+            } else {
+                window.location.hash = '';
+            }
+        }, 1500); // Delay to keep the highlight visible for a moment
+    } 
     
-    // Update active link on page load
-    document.addEventListener('DOMContentLoaded', updateActiveNavLink);
+    // Check scroll position regardless of hash presence
+    // Get all sections by their IDs
+    const sections = [];
     
-    // Update active link on hash change
-    window.addEventListener('hashchange', updateActiveNavLink);
-    
-    // Update active link on scroll with throttling
-    let scrollTimeout;
-    window.addEventListener('scroll', function() {
-        if (!scrollTimeout) {
-            scrollTimeout = setTimeout(function() {
-                updateActiveNavLink();
-                scrollTimeout = null;
-            }, 100); // Throttle to run at most every 100ms
+    // Collect all sections referenced in the navigation
+    navLinks.forEach(link => {
+        const sectionId = link.getAttribute('data-section');
+        if (sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                sections.push(section);
+            }
         }
     });
     
-    // If using Astro View Transitions, also update on page load
-    document.addEventListener('astro:page-load', updateActiveNavLink);
+    // If we have sections to check
+    if (sections.length > 0 && !currentHash) {  // Only do scroll-based highlighting if no hash
+        // Find which section is most visible in the viewport
+        let currentSection = null;
+        let maxVisibleHeight = 0;
+        
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            // Calculate how much of the section is visible in the viewport
+            const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+            
+            // If this section has more visible area than previous ones
+            if (visibleHeight > maxVisibleHeight && visibleHeight > 0) {
+                maxVisibleHeight = visibleHeight;
+                currentSection = section.id;
+            }
+        });
+        
+        // Update active link based on current section
+        if (currentSection) {
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-section') === currentSection) {
+                    link.classList.add('cs-active');
+                }
+            });
+        }
+    }
+}
+
+// Update active link on page load
+document.addEventListener('DOMContentLoaded', updateActiveNavLink);
+
+// Update active link on hash change
+window.addEventListener('hashchange', updateActiveNavLink);
+
+// Update active link on scroll with throttling
+let scrollTimeout;
+window.addEventListener('scroll', function() {
+    if (!scrollTimeout) {
+        scrollTimeout = setTimeout(function() {
+            updateActiveNavLink();
+            scrollTimeout = null;
+        }, 100); // Throttle to run at most every 100ms
+    }
+});
+
+// If using Astro View Transitions, also update on page load
+document.addEventListener('astro:page-load', updateActiveNavLink);
 </script>
 
                                 
