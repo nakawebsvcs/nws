@@ -19,7 +19,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
   <!-- ============================================ -->
 
   <Landing 
-    title="Contact"
+    title="contact me"
     image={optimizedImage}
   />
 
@@ -29,14 +29,15 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
   <section id="cs-contact">
     <div class="cs-container">
-      <form id="cs-form" name="Contact Form" method="post">
+       <form id="cs-form" name="Contact Form" method="post" netlify netlify-honeypot="company">
+  <p class="hidden">
+    <label>Don't fill this out if you're human: <input name="company" /></label>
+  </p>
         <div class="cs-content">
           <span class="cs-topper">Contact</span>
           <h2 class="cs-title">Get in Touch</h2>
           <p class="cs-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus
-            elementum ullamcorper ipsum porttitor aliquam. Id magna urna
-            ultrices odio pulvinar. Sed ut.
+            Let me know how I can support you via the form below and I'll respond as soon as possible. Mahalo nui!
           </p>
         </div>
         <label>
@@ -62,7 +63,6 @@ const optimizedImage = await getOptimizedImage(landingImage)
         <label>
           Phone
           <input
-            required
             type="text"
             id="phone"
             name="phone"
@@ -70,12 +70,12 @@ const optimizedImage = await getOptimizedImage(landingImage)
           />
         </label>
         <label>
-          How Did You Find Us
+          Subject
           <input
             type="text"
-            id="find"
-            name="find-us"
-            placeholder="How did you find us?"
+            id="subject"
+            name="subject"
+            placeholder="Subject"
           />
         </label>
         <label class="cs-label-message">
@@ -92,18 +92,18 @@ const optimizedImage = await getOptimizedImage(landingImage)
         <!--Email-->
         <span class="cs-header">Email</span>
         <a class="cs-link" href={`mailto:${client.email}`}>{client.email}</a>
-        <!--Phone-->
+        <!--Phone
         <span class="cs-header">Phone</span>
         <a class="cs-link" href={`tel:${client.phoneForTel}`}
           >{client.phoneFormatted}</a
-        >
+        > -->
         <!--Address-->
-        <span class="cs-header">Address</span>
+        <span class="cs-header">Location</span>
         <a class="cs-link" href={client.address.mapLink}>
-          {client.address.lineOne},
+          <!-- {client.address.lineOne},
           <br />
           {client.address.lineTwo},
-          <br />
+          <br /> -->
           <span class="cs-block">
             {client.address.city}
             {client.address.state}
@@ -115,12 +115,12 @@ const optimizedImage = await getOptimizedImage(landingImage)
         <picture class="cs-bg-picture">
           <source
             media="(min-width: 601px)"
-            srcset="/assets/images/landing-1.png"
+            srcset="/assets/images/Brand-Color-Logo.png"
           />
           <img
             aria-hidden="true"
             decoding="async"
-            src="/assets/images/landing-1.png"
+            src="/assets/images/Brand-Color-Logo.png"
             alt="building"
             loading="lazy"
             width="2500"
@@ -138,6 +138,15 @@ const optimizedImage = await getOptimizedImage(landingImage)
   /*-- -------------------------- -->
 <---          Contact           -->
 <--- -------------------------- -*/
+
+.hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 
   /* Mobile - 360px */
   @media only screen and (min-width: 0em) {
