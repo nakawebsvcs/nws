@@ -29,9 +29,9 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
   <section id="cs-contact">
     <div class="cs-container">
-       <form id="cs-form" name="Contact Form" method="post" netlify netlify-honeypot="company">
+       <form id="cs-form" name="contact" method="post" data-netlify="true" netlify-honeypot="website">
   <p class="hidden">
-    <label>Don't fill this out if you're human: <input name="company" /></label>
+    <label>Don't fill this out if you're human: <input name="website" /></label>
   </p>
         <div class="cs-content">
           <span class="cs-topper">Contact</span>
@@ -49,12 +49,22 @@ const optimizedImage = await getOptimizedImage(landingImage)
             name="name"
             placeholder="Name"
           />
+          </label>
+           <label>
+          Company/Organization
+          <input
+            type="text"
+            id="organization"
+            name="organization"
+            placeholder="Company/Organization"
+          />
+        
         </label>
         <label>
           Email
           <input
             required
-            type="text"
+            type="email"
             id="email"
             name="email"
             placeholder="Email"
@@ -63,30 +73,22 @@ const optimizedImage = await getOptimizedImage(landingImage)
         <label>
           Phone
           <input
-            type="text"
+            type="tel"
             id="phone"
             name="phone"
             placeholder="Phone"
-          />
-        </label>
-        <label>
-          Subject
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            placeholder="Subject"
           />
         </label>
         <label class="cs-label-message">
           Message
           <textarea
             required
-            name="Message"
+            name="message"
             id="message"
             placeholder="Write message..."></textarea>
         </label>
-        <button class="cs-button-solid" type="submit">Submit Message</button>
+        <div data-netlify-recaptcha="true"></div>
+<button class="cs-button-solid" type="submit">Submit Message</button>
       </form>
       <div class="cs-right-section">
         <!--Email-->
