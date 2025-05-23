@@ -29,7 +29,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
   <section id="cs-contact">
     <div class="cs-container">
-       <form id="cs-form" name="contact" method="post" data-netlify="true" netlify-honeypot="website">
+       <form id="cs-form" name="contact" method="post" data-netlify="true" netlify-honeypot="website" action="/contact/?success=true">
   <p class="hidden">
     <label>Don't fill this out if you're human: <input name="website" /></label>
   </p>
@@ -132,6 +132,60 @@ const optimizedImage = await getOptimizedImage(landingImage)
       </div>
     </div>
   </section>
+
+  <!-- Add this before the closing </BaseLayout> tag -->
+<div id="thank-you-lightbox" class="lightbox">
+  <div class="lightbox-content">
+    <span class="close-lightbox">&times;</span>
+    <h2>Thank You!</h2>
+    <p>Your message has been received and I'll respond as soon as possible. Mahalo nui!</p>
+    <button class="cs-button-solid close-button">Close</button>
+  </div>
+</div>
+
+<script client:load>
+  // Check for success parameter and show lightbox if present
+  document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+    const lightbox = document.getElementById('thank-you-lightbox');
+    const closeLightbox = document.querySelectorAll('.close-lightbox, .close-button');
+    
+    // Show lightbox if success parameter is true
+    if (success === 'true' && lightbox) {
+      lightbox.classList.add('active');
+      
+      // Update URL without the success parameter (to prevent showing the lightbox on refresh)
+      history.replaceState({}, document.title, window.location.pathname);
+    }
+    
+    // Close lightbox when clicking close button
+    if (closeLightbox) {
+      closeLightbox.forEach(element => {
+        element.addEventListener('click', function() {
+          lightbox.classList.remove('active');
+        });
+      });
+    }
+    
+    // Close lightbox when clicking outside the content
+    if (lightbox) {
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          lightbox.classList.remove('active');
+        }
+      });
+    }
+    
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+      }
+    });
+  });
+</script>
+
 </BaseLayout>
 
 <style lang="less">
@@ -435,4 +489,62 @@ const optimizedImage = await getOptimizedImage(landingImage)
       }
     }
   }
+
+   /*-- -------------------------- -->
+<---          Lightbox            -->
+<--- -------------------------- -*/
+
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  
+  &.active {
+    display: flex;
+  }
+  
+  .lightbox-content {
+    background-color: white;
+    padding: clamp(2rem, 5vw, 3rem);
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    text-align: center;
+    
+    h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      margin-bottom: 2rem;
+    }
+    
+    .close-lightbox {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+      
+      &:hover {
+        color: var(--primary);
+      }
+    }
+    
+    .close-button {
+      display: inline-block;
+    }
+  }
+}
+
 </style>
