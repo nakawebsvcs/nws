@@ -10,6 +10,7 @@ import navData from "../data/navData.json";
     <div class="cs-container">
         <!--Nav Logo-->
         <a href="/" class="cs-li-link nws" aria-label="back to home">
+             <img src="/assets/images/nws-logo-primary-white.png" alt="Nakamura Web Services Logo" class="nws-logo">
             Nakamura Web Services
         </a>
         <!--Navigation List-->
@@ -269,9 +270,19 @@ html {
         }
 
         .cs-li-link.nws {
-        margin-right: auto;
-        text-align: left;
-    }
+            margin-right: auto;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem; /* Spacing between logo and text */
+            
+            .nws-logo {
+                width: 3.3rem; /* Mobile logo size */
+                height: 3.3rem;
+                object-fit: contain;
+                flex-shrink: 0; /* Prevents logo from shrinking */
+            }
+        }
 
         .cs-toggle {
             width: (56/16rem);
@@ -444,7 +455,8 @@ html {
             margin: 0;
             color: #086173;
             display: inline-block;
-            position: relative;transition: color 0.3s ease; /* Add transition for smooth color change */
+            position: relative;
+            transition: color 0.3s ease; /* Add transition for smooth color change */
 
             &:not(.nws):hover {
                 color: var(--accentColor); /* Change color on hover */
@@ -535,12 +547,22 @@ html {
             display: none;
         }
 
-          .cs-li-link.nws {
-        margin-right: auto;
-        padding-left: 0;
-        order: -1;
-        font-size: 1.3rem;
-    }
+        .cs-li-link.nws {
+            margin-right: auto;
+            padding-left: 0;
+            order: -1;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem; /* Spacing between logo and text */
+            
+            .nws-logo {
+                width: 3.3rem; /* Desktop logo size */
+                height: 3.3rem;
+                object-fit: contain;
+                flex-shrink: 0; /* Prevents logo from shrinking */
+            }
+        }
 
         .cs-ul-wrapper {
             /* absolutely positioned to be dead center */
