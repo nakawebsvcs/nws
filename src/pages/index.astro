@@ -4,7 +4,7 @@ import FAQ from "../components/FAQ.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import {getOptimizedImage} from "../js/utils"
-import landingImage from "../assets/images/landing-1.png" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import landingImage from "../assets/images/main-img.png" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 
 // Import service icons
 import webDevIcon from "../assets/images/web-dev-icon.jpeg"; // Replace with your actual filenames
@@ -19,11 +19,38 @@ const optimizedImage = await getOptimizedImage(landingImage)
   description="Hawaiʻi-based web developer helping nonprofits, entrepreneurs, educators, and other changemakers create and maintain an impactful web presence and design digital solutions."
   preloadedImage = {optimizedImage}
 >
-  <!-- ============================================ -->
+<!-- ============================================ -->
+<!--                    Hero                      -->
+<!-- ============================================ -->
+
+<section id="hero-2151">
+    <div class="cs-container">
+        <div class="cs-content">
+            <img src="/assets/images/nws-logo-brand-color.png" alt="Nakamura Web Services Logo" width="90" height="90">
+            <h2 class="cs-title">create & elevate your web presence and digital products</h2>
+            <p class="cs-text">
+                Hawaiʻi-based web developer helping nonprofits, entrepreneurs, educators, and other changemakers create and maintain an impactful web presence and design digital solutions.
+            </p>
+            <a href="" class="cs-button-solid">Contact</a>
+            <img class="cs-graphic" decoding="async" src="/assets/images/leaf-accent-transparent.png" alt="leaves" width="280" height="350" aria-hidden="true">
+        </div>
+        <picture class="cs-background">
+            <!--Mobile Image-->
+            <source media="(max-width: 600px)" srcset={optimizedImage.src}>
+            <!--Tablet and above Image-->
+            <source media="(min-width: 601px)" src={optimizedImage.src}>
+            <img loading="lazy" decoding="async" src={optimizedImage.src} alt="icon" width="960" height="857">
+        </picture>
+    </div>
+</section>
+                                
+                                
+                                
+<!-- ============================================ -->
   <!--                    Hero                      -->
   <!-- ============================================ -->
 
-  <section id="hero">
+  <!-- <section id="hero" style={`--hero-bg: url(${optimizedImage.src})`}>
     <div class="cs-container">
       <div class="cs-flex-group">
         <img src="/assets/images/NWS-light-shadow.png" alt="Nakamura Web Services Logo" width="120" height="120">
@@ -34,26 +61,26 @@ const optimizedImage = await getOptimizedImage(landingImage)
         </p>
         <a href="/contact" class="cs-button-solid">Contact</a>
       </div>
-    </div>
+    </div> -->
 
     <!-- Background Image -->
-    <picture class="cs-picture">
+    <!-- <picture class="cs-picture">
       <source
         media="(max-width: 600px)"
-        srcset="/assets/images/landing-1.png"
+        srcset={optimizedImage.src}
       />
-      <source media="(min-width: 601px)" srcset="/assets/images/landing-1.png" />
+      <source media="(min-width: 601px)" srcset={optimizedImage.src} />
       <img
         aria-hidden="true"
         decoding="async"
         src={optimizedImage.src}
-        alt="new home"
+        alt="Nakamura Web Services"
         width="2500"
         height="1667"
         loading="eager"
       />
     </picture>
-  </section>
+  </section> -->
 
  
 
@@ -426,214 +453,185 @@ I definitely have Nakamura Web Services to thank for that.
 }
 
 
-  /*-- -------------------------- -->
-<---           Hero             -->
+/*-- -------------------------- -->
+<---            Hero            -->
 <--- -------------------------- -*/
 
-  /* Mobile - 360px */
-  @media only screen and (min-width: 0em) {
-    #hero {
-      /* Centers button */
-      text-align: center;
-      height: 120vh;
-      /* changes on tablet */
-      padding: 0 (16/16rem);
-      padding-bottom: (100/16rem);
-      position: relative;
-      z-index: 1;
-      /* prevents overflow from the lines extending past the screen width */
-      overflow: hidden;
-
-      .cs-picture {
-        /* Background Image */
-        width: 100%;
-        height: 100%;
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -2;
-
-        &:before {
-          /* Color Overlay */
-          content: "";
-          width: 100%;
-          height: 100%;
-          background: #645c58;
-          opacity: 0.7;
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 1;
-          /* prevents the cursor from interacting with it */
-          pointer-events: none;
-        }
-
-        img {
-          width: 100%;
-          height: 100%;
-          /* Makes image act like a background-image */
-          object-fit: cover;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-      }
-
-      .cs-container {
-        width: 100%;
-        max-width: (1280/16em);
-        margin: auto;
-        /* we put the padding top and bottom on the container instead of #Hero so the pseudo element lines go to the top and bottom of the section */
-        /* 144px - 280px - leaving extra space for the navigation */
-        /* changes on tablet */
-        padding: clamp(7em, 20.95vw, 15em) 0;
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #hero-2151 {
+        /* 160px - 200px - top leaving extra space for the navigation */
+        padding: clamp(10rem, 25.95vw, 12.5rem) 0 0 0;
+        background-color: #f7f7f7;
+        overflow: hidden;
         position: relative;
 
-      }
+        .cs-container {
+            width: 100%;
+            max-width: (1720/16rem);
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 48px - 100px */
+            gap: clamp(3rem, 6vw, 6.25rem);
+        }
 
-      .cs-flex-group {
-        width: 90vw;
-        /* 464px - 562px */
-        max-width: clamp(32em, 70vw, 42em);
-        margin: auto;
-        /* 60px - 220px */
-        margin-bottom: clamp(3.75em, 15.5vw, 13.75em);
-        box-sizing: border-box;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-wrap: wrap;
-      }
+        .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: center;
+            width: 100%;
+            /* prevents padding and border from affecting height and width */
+            box-sizing: border-box;
+            /* 16px - 100px left & right */
+            padding: 0 clamp(1rem, 2vw, 6.25rem);
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            order: 2;
+        }
 
-      .cs-topper {
-        text-align: center;
-        margin-bottom: (16/16rem);
-        color: var(--primary);
-      }
+        .cs-title {
+            /* 39px - 61px */
+            font-size: clamp(2.4375rem, 4vw, 3.5312rem);
+            color: var(--primary);
+            max-width: 30ch;
+        }
 
-      .cs-title {
-        text-align: center;
-        width: 100%;
-        color: var(--bodyTextColorWhite);
-        font-size: clamp(2.2rem, 4vw, 4rem);
-      }
+        .cs-text {
+            /* 16px - 20px */
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            max-width: 65ch;
+            margin: 0 0 (32/16rem) 0;
+        }
 
-      .cs-title .desktop-break {
-    display: inline; /* No breaks on mobile */
-  }
+        
 
-      .cs-text {
-        text-align: center;
-        font-size: clamp(1rem, 2vw, 1.25rem);
-        /* 32px - 40px */
-        margin-top: 1rem; /* Add top margin */
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: clamp(2.5rem, 4vw, 3rem);
-        color: var(--bodyTextColorWhite);
-      }
+        .cs-background {
+            width: 100%;
+            height: 100vw;
+            max-height: (476/16rem);
+            display: block;
+            position: relative;
+            z-index: 1;
+            order: 1;
 
-      .cs-divider {
-    width: 3rem;
-    height: 0.25rem;
-    background-color: var(--primary); 
-    margin: 1rem auto; 
-    display: block; 
-  }
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
 
-      .cs-button-solid {
-        line-height: clamp(2.875em, 5.5vw, 3.5em);
-        height: initial;
-        margin-bottom: calc(16 / 16 * 1rem);
-      }
+        .cs-graphic {
+            /* 200px - 280px */
+            width: clamp(12.5rem, 25vw, 17.5rem);
+            height: auto;
+            display: none;
+            position: absolute;
+        }
+    }
+}
 
-      .cs-button-transparent {
-        font-size: (16/16rem);
-        font-weight: 700;
-        /* 46px - 56px */
-        line-height: clamp(2.875em, 5.5vw, 3.5em);
-        text-decoration: none;
-        width: (180/16rem);
-        /* 46px - 56px */
-        height: clamp(2.875em, 5.5vw, 3.5em);
-        margin: 0 (8/16rem);
-        box-sizing: border-box;
-        padding: 0;
-        color: #fff;
-        background-color: transparent;
-        border: 1px solid var(--bodyTextColorWhite);
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        z-index: 1;
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #hero-2151 {
+        .cs-background {
+            width: 85%; /* Add this line to make it smaller on tablet */
+            margin: 0 auto; /* Add this to center it */
+            order: 1;
+            transform: translateY(-48px);
+        }
 
-        &:before {
-          content: "";
-          background: #000;
-          opacity: 1;
+        .cs-content {
+            /* 60px - 100px */
+            padding-bottom: clamp(3.75rem, 7.82vw, 6.25rem);
+            order: 2;
+        }
+    }
+}
+
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #hero-2151 {
+        /* 120px - 250px top */
+        /* 60px - 200px  bottom */
+        padding: clamp(7.5rem, 23.82vw, 15.625rem) (16/16rem) clamp(3.75rem, 15.82vw, 12.5rem) (16/16rem);
+
+        .cs-container {
+            flex-direction: row;
+            gap: (24/16rem);
+        }
+
+        .cs-content {
+            /* removed padding and put it on the section */
+            width: 55%;
+            /* 16px - 100px */
+            padding: 0 clamp(1rem, 2vw, 6.25rem);
+            margin-left: (48/16rem);
+            transform: translateY(-60px); 
+            margin-bottom: 0;
+        }
+
+        .cs-background {
+            width: 45%;
+            height: auto;
+            max-height: 100%;
+            position: absolute;
+            top: 0;
+            right: (48/16rem);
+            bottom: 0;
+        }
+
+        .cs-graphic {
           display: block;
-          position: absolute;
-          /* so it sits on top of the border */
-          top: -1px;
-          right: -1px;
-          bottom: -1px;
-          left: -1px;
-          z-index: -1;
-          /* this is what creates the grow affect on hover */
-          transform: scaleX(0);
-          transition: transform 0.3s;
-          transform-origin: left;
+            bottom: calc(clamp(3.75rem, 15.82vw, 12.5rem)*-1.5); /* Move down by making the negative value larger */
+    left: (-120/16rem); /* Move further left */
+    transform: rotate(15deg); /* Rotate clockwise by 15 degrees */
+        }
+    }
+}
+
+/* Large Desktop - 1440px */
+@media only screen and (min-width: 90rem) {
+    #hero-2151 {
+        .cs-background {
+            width: 40%;
+            right: (64/16rem);
         }
 
-        &:hover {
-          &:before {
-            transform: scaleX(1);
-          }
+        .cs-content {
+            width: 50%;
+            margin-left: (64/16rem);
+            margin-bottom: 0;
         }
 
-        .cs-img {
-          margin-right: (12/16rem);
-          display: block;
+        .cs-graphic {
+            left: (-200/16rem);
         }
-      }
     }
-  }
+}
 
-  /* Tablet - 768px */
-  @media only screen and (min-width: 48em) {
-    #hero {
-      /* 32px - 40px */
-      padding: 0 clamp(2em, 5vw, 2.5em);
+/* Custom range - 300px to 1000px (vertical stacked layout) */
+@media only screen and (min-width: 18.75rem) and (max-width: 62.5rem) {
+    #hero-2151 {
+        .cs-container {
+            gap: (6/16rem); /* Set a specific smaller gap, like 32px */
+        }
 
-      .cs-container {
-        padding: clamp(7em, 27.95vw, 17.5em) 0 clamp(9em, 30.95vw, 23.5em) 0;
-      }
-
-      .cs-title .desktop-break {
-    display: block;
+        .cs-background {
+            margin-top: (-80/16rem); /* Less space above the image */
+            margin-bottom: (48/16rem); /* More space below the image */
+        }
     }
-
-      .cs-button-solid {
-        margin-right: (20/16rem);
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  /* Desktop Parallax Effect - 1300px */
-  @media only screen and (min-width: 81.25em) {
-    #hero {
-      background: url("/assets/images/landing-1.png");
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      /* creates parallax effect on background image */
-      background-attachment: fixed;
-    }
-  }
+}
 
   /* PAGE-SPECIFIC STYLES FOR THE HOME PAGE */
 
@@ -1404,7 +1402,7 @@ I definitely have Nakamura Web Services to thank for that.
     
     .cs-email-link {
       font-family: 'Merriweather', serif;
-      color: #F4623A;
+      color: var(--accentColor);
       font-size: (18/16rem);
       font-weight: 500;
       transition: color 0.3s;
@@ -1481,18 +1479,19 @@ I definitely have Nakamura Web Services to thank for that.
     transform: translate(0, 0) !important;
   }
   
-  /* Hide hero elements by default */
-  #hero .cs-flex-group > * {
+/* Hide hero elements by default for new hero section */
+#hero-2151 .cs-content > *:not(.cs-graphic),
+#hero-2151 .cs-background {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-  }
-  
-  /* This class will be added by JavaScript to trigger the animation */
-  .hero-animate {
+}
+
+/* This class will be added by JavaScript to trigger the animation */
+.hero-animate {
     opacity: 1 !important;
     transform: translateY(0) !important;
-  }
+}
 
   /* Mobile-specific animation overrides 
   @media only screen and (max-width: 767px) {
@@ -1531,28 +1530,35 @@ I definitely have Nakamura Web Services to thank for that.
 </style>
 
 <script is:inline>
-  function animateHero() {
+function animateHero() {
     // Wait a moment to ensure the page is fully loaded
     setTimeout(() => {
-      // Get all direct children of the flex-group
-      const heroElements = document.querySelectorAll("#hero .cs-flex-group > *");
-      
-      // Animate each element with a delay
-      heroElements.forEach((el, index) => {
-        // Set a delay for each element
-        el.style.transitionDelay = `${index * 300}ms`;
+        // Get all direct children of the cs-content div in the new hero
+        const heroElements = document.querySelectorAll("#hero-2151 .cs-content > *:not(.cs-graphic)");
         
-        // Add the animation class
-        el.classList.add("hero-animate");
-      });
-    }, 300);
-  }
+        // Animate each element with a delay
+        heroElements.forEach((el, index) => {
+            // Set a delay for each element
+            el.style.transitionDelay = `${index * 300}ms`;
+            
+            // Add the animation class
+            el.classList.add("hero-animate");
+        });
 
-  // Run on initial page load
-  document.addEventListener('DOMContentLoaded', animateHero);
-  
-  // Run after Astro page transitions
-  document.addEventListener('astro:page-load', animateHero);
+        // Animate the background image separately
+        const backgroundImg = document.querySelector("#hero-2151 .cs-background");
+        if (backgroundImg) {
+            backgroundImg.style.transitionDelay = `${heroElements.length * 300}ms`;
+            backgroundImg.classList.add("hero-animate");
+        }
+    }, 300);
+}
+
+// Run on initial page load
+document.addEventListener('DOMContentLoaded', animateHero);
+
+// Run after Astro page transitions
+document.addEventListener('astro:page-load', animateHero);
 </script>
 
 <script is:inline>
@@ -1578,7 +1584,7 @@ I definitely have Nakamura Web Services to thank for that.
               // Set a delay for each word
               setTimeout(() => {
                 word.classList.add("visible");
-              }, index * 800); // 800ms between words
+              }, index * 600); // 800ms between words
             });
           }
         }
@@ -1615,7 +1621,7 @@ I definitely have Nakamura Web Services to thank for that.
     serviceCards.forEach((card, index) => {
       card.classList.add("fade-in-scroll");
       // Slow down the staggered animation by increasing delay
-      card.style.transitionDelay = `${index * 0.3}s`;
+      card.style.transitionDelay = `${index * 0.2}s`;
       observer.observe(card);
     });
 

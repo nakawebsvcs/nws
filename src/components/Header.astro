@@ -447,7 +447,7 @@ html {
             position: relative;transition: color 0.3s ease; /* Add transition for smooth color change */
 
             &:not(.nws):hover {
-                color: #F4623A; /* Change color on hover */
+                color: var(--accentColor); /* Change color on hover */
             }
 
             &:before {
@@ -464,7 +464,7 @@ html {
             }
 
             &:not(.nws).cs-active {
-                color: #F4623A; /* Change color for active links */
+                color: var(--accentColor); /* Change color for active links */
                 &:before {
                     display: block;
                 }
@@ -583,7 +583,7 @@ html {
             transition: color 0.3s;
 
             &:not(.nws):hover {
-                color: #F4623A; /* Change color on hover */
+                color: var(--accentColor); /* Change color on hover */
                 &:before {
                     opacity: 1;
                     transform: translate(-50%, -50%) scale(1);
