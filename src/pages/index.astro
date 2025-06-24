@@ -172,10 +172,26 @@ const optimizedImage = await getOptimizedImage(landingImage)
                 </p>
             </li>
         </ul>
-        <div class="cs-button-container">
-            <a href="/assets/NWS-Products-Pricing.pdf" target="_blank" class="cs-button-solid">Download Products & Pricing</a>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!--              Products & Pricing              -->
+<!-- ============================================ -->
+
+<section id="faq-1741">
+  <div class="cs-container">
+    <div class="cs-content">
+      <a href="/assets/NWS-Products-Pricing.pdf" target="_blank" style="text-decoration: none;">
+      <h2 class="cs-title" style="opacity: 90%;">Download my product and pricing sheet! >>></h2></a>
+       <div class="cs-button-container">
+            <a href="/assets/NWS-Products-Pricing.pdf" target="_blank" class="cs-button-solid">View Products & Pricing</a>
+            <img src="/assets/images/Hosting Packages.png" style="width: 80%; margin-top: 2.5rem;">
         </div>
     </div>
+    <div class="cs-flex-group">
+     <a href="/assets/NWS-Products-Pricing.pdf" target="_blank"><img src="/assets/images/products-pricing-screenshot.png" style="width: 75%"></a>
+  </div>
 </section>
 
 
@@ -965,6 +981,133 @@ I definitely have Nakamura Web Services to thank for that.
       text-align: center;
     }
     }
+
+
+/*-- -------------------------- -->
+<---       Products & Pricing   -->
+<--- -------------------------- -*/
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0rem) {
+    #faq-1741 {
+      padding: var(--sectionPadding);
+      position: relative;
+      background-color: #fafbfc;
+
+      .cs-container {
+        width: 100%;
+        /* changes to 1280px at desktop */
+        max-width: (584/16rem);
+        margin: 2em auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* 48px - 64px */
+        gap: clamp(3rem, 6vw, 4rem);
+      }
+
+      .cs-content {
+        /* set text align to left if content needs to be left aligned */
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        /* centers content horizontally, set to flex-start to left align */
+        align-items: center;
+      }
+
+      .cs-content {
+  a {
+    .cs-topper,
+    .cs-title {
+      position: relative;
+      
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.3s ease;
+      }
+      
+      &:hover:after {
+        width: 100%;
+      }
+    }
+  }
+}
+      .cs-title {
+        max-width: 15ch;
+        margin: 0 0 (32/16rem);
+      }
+
+     .cs-flex-group {
+      display: flex;
+  justify-content: center;
+  width: 100%;
+
+    img {
+      margin: 0 auto;
+      display: block;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+     }
+
+      .cs-item-text {
+        /* 14px - 16px */
+        font-size: clamp(0.875rem, 1.5vw, 1rem);
+        line-height: 1.5em;
+        height: 0;
+        margin: 0;
+        /* clips the text so it doesn't show up */
+        overflow: hidden;
+        color: var(--bodyTextColor);
+        opacity: 0;
+        transition:
+          opacity 0.3s,
+          padding-bottom 0.3s;
+      }
+    }
+  }
+
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #faq-1741 {
+      .cs-gallery {
+        max-width: (1720/16rem);
+      }
+
+      .cs-picture {
+        grid-column: span 1;
+      }
+    }
+  }
+
+  /* Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+    #faq-1741 {
+      .cs-container {
+        max-width: (1280/16rem);
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+      }
+
+      .cs-content {
+        text-align: left;
+        width: 40%;
+        align-items: flex-start;
+        /* prevents flexbox from squishing it */
+        flex: none;
+      }
+    }
+  }
 
 
 /*-- -------------------------- -->
