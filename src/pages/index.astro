@@ -5,6 +5,12 @@ import FAQ from "../components/FAQ.astro";
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
 import {getOptimizedImage} from "../js/utils"
 import landingImage from "../assets/images/landing-1.png" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+
+// Import service icons
+import webDevIcon from "../assets/images/web-dev-icon.jpeg"; // Replace with your actual filenames
+import appDevIcon from "../assets/images/app-dev-icon.jpeg";
+import hostingIcon from "../assets/images/hosting-icon.jpeg";
+
 const optimizedImage = await getOptimizedImage(landingImage)
 ---
 
@@ -102,33 +108,33 @@ const optimizedImage = await getOptimizedImage(landingImage)
             <div class="cs-divider"></div>
         </div>
         <ul class="cs-card-group">
-            <li class="cs-item">
-                <div class="cs-icon-wrapper">
-                    <i class="bi-laptop cs-icon" aria-hidden="true"></i>
-                </div>
-                <h3 class="cs-h3">Web Development</h3>
-                <p class="cs-item-text">
-                    Attractive, responsive, custom web pages
-                </p>
-            </li>
-            <li class="cs-item">
-                <div class="cs-icon-wrapper">
-                    <i class="bi-globe cs-icon" aria-hidden="true"></i>
-                </div>
-                <h3 class="cs-h3">Web & Mobile Apps</h3>
-                <p class="cs-item-text">
-                    Creation of functional apps & tools
-                </p>
-            </li>
-            <li class="cs-item">
-                <div class="cs-icon-wrapper">
-                    <i class="bi-pc-display-horizontal cs-icon" aria-hidden="true"></i>
-                </div>
-                <h3 class="cs-h3">Web Hosting</h3>
-                <p class="cs-item-text">
-                    Hosting setup, ongoing maintenance and updates
-                </p>
-            </li>
+    <li class="cs-item">
+        <div class="cs-icon-wrapper">
+            <img src={webDevIcon.src} alt="Web Development" class="cs-icon-img" width="40" height="40" />
+        </div>
+        <h3 class="cs-h3">Web Development</h3>
+        <p class="cs-item-text">
+            Attractive, responsive, custom web pages
+        </p>
+    </li>
+    <li class="cs-item">
+        <div class="cs-icon-wrapper">
+            <img src={appDevIcon.src} alt="Web & Mobile Apps" class="cs-icon-img" width="40" height="40" />
+        </div>
+        <h3 class="cs-h3">Web & Mobile Apps</h3>
+        <p class="cs-item-text">
+            Creation of functional apps & tools
+        </p>
+    </li>
+    <li class="cs-item">
+        <div class="cs-icon-wrapper">
+            <img src={hostingIcon.src} alt="Web Hosting" class="cs-icon-img" width="40" height="40" />
+        </div>
+        <h3 class="cs-h3">Web Hosting</h3>
+        <p class="cs-item-text">
+            Hosting setup, ongoing maintenance and updates
+        </p>
+    </li>
             <li class="cs-item">
                 <div class="cs-icon-wrapper">
                     <i class="bi-heart cs-icon" aria-hidden="true"></i>
@@ -902,7 +908,15 @@ I definitely have Nakamura Web Services to thank for that.
       }
       
       @media only screen and (min-width: 64rem) {
-        width: 22%;
+        width: 30%;
+      }
+       /* Target the 4th item specifically */
+      &:nth-child(4) {
+        @media only screen and (min-width: 48rem) {
+          width: 100%; /* Full width on tablet+ */
+          max-width: (300/16rem); /* Keep the same max-width as others */
+          margin-top: (16/16rem); /* Add some extra space above */
+        }
       }
     }
 
@@ -915,7 +929,15 @@ I definitely have Nakamura Web Services to thank for that.
       margin-bottom: 1rem;
     }
 
-    .cs-icon {
+    .cs-icon-img {
+  width: 9rem; 
+  height: 9rem;
+  margin-bottom: 3rem;
+  object-fit: contain; /* Maintains aspect ratio */
+  display: block;
+}
+
+    .cs-icon:not(.cs-icon-img) {
       /* Style for Bootstrap Icons */
       font-size: 2.5rem;
       color: var(--primary);
