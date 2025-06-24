@@ -26,7 +26,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
 <section id="hero-2151">
     <div class="cs-container">
         <div class="cs-content">
-            <img src="/assets/images/nws-logo-brand-color.png" alt="Nakamura Web Services Logo" width="90" height="90">
+            <img src="/assets/images/nws-logo-brand-color.png" class="cs-logo-desktop" alt="Nakamura Web Services Logo" width="90" height="90">
             <h2 class="cs-title">create & elevate your web presence and digital products</h2>
             <p class="cs-text">
                 Hawaiʻi-based web developer helping nonprofits, entrepreneurs, educators, and other changemakers create and maintain an impactful web presence and design digital solutions.
@@ -43,46 +43,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
         </picture>
     </div>
 </section>
-                                
-                                
-                                
-<!-- ============================================ -->
-  <!--                    Hero                      -->
-  <!-- ============================================ -->
 
-  <!-- <section id="hero" style={`--hero-bg: url(${optimizedImage.src})`}>
-    <div class="cs-container">
-      <div class="cs-flex-group">
-        <img src="/assets/images/NWS-light-shadow.png" alt="Nakamura Web Services Logo" width="120" height="120">
-       <h1 class="cs-title"><span class="desktop-break">create & elevate</span> <span class="desktop-break">your web presence</span> <span class="desktop-break">and digital products</span></h1>
-        <div class="cs-divider"></div>
-        <p class="cs-text">
-          Hawaiʻi-based web developer helping nonprofits, entrepreneurs, educators, and other changemakers create and maintain an impactful web presence and design digital solutions.
-        </p>
-        <a href="/contact" class="cs-button-solid">Contact</a>
-      </div>
-    </div> -->
-
-    <!-- Background Image -->
-    <!-- <picture class="cs-picture">
-      <source
-        media="(max-width: 600px)"
-        srcset={optimizedImage.src}
-      />
-      <source media="(min-width: 601px)" srcset={optimizedImage.src} />
-      <img
-        aria-hidden="true"
-        decoding="async"
-        src={optimizedImage.src}
-        alt="Nakamura Web Services"
-        width="2500"
-        height="1667"
-        loading="eager"
-      />
-    </picture>
-  </section> -->
-
- 
 
 <!-- ============================================ -->
 <!--             Side By Side Reverse             -->
@@ -513,9 +474,10 @@ I definitely have Nakamura Web Services to thank for that.
 
         .cs-title {
             /* 39px - 61px */
-            font-size: clamp(2.4375rem, 4vw, 3.5312rem);
+            font-size: clamp(2rem, 4vw, 3.5312rem);
             color: var(--primary);
             max-width: 30ch;
+            margin-top: -3rem;
         }
 
         .cs-text {
@@ -525,8 +487,9 @@ I definitely have Nakamura Web Services to thank for that.
             margin: 0 0 (32/16rem) 0;
         }
 
-        
-
+        .cs-logo-desktop {
+            display: none;
+    }
         .cs-background {
             width: 100%;
             height: 100vw;
@@ -571,6 +534,14 @@ I definitely have Nakamura Web Services to thank for that.
             padding-bottom: clamp(3.75rem, 7.82vw, 6.25rem);
             order: 2;
         }
+
+        .cs-title {
+          margin-top: 0;
+        }
+
+        .cs-logo-desktop {
+            display: block;
+    }
     }
 }
 
