@@ -336,9 +336,9 @@ unique needs and budget of nonprofits in Hawaiʻi. Her approach is both professi
             height="16"
           />
         </li>
-        <!-- Review 2 
+        <!-- Review 2 -->
       <li class="cs-item">
-          <img
+          <!-- <img
             class="cs-item-img"
             aria-hidden="true"
             loading="lazy"
@@ -347,16 +347,18 @@ unique needs and budget of nonprofits in Hawaiʻi. Her approach is both professi
             alt="profile picture"
             width="80"
             height="80"
-          />
+          /> -->
           <p class="cs-item-p">
-            Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor
-            habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed
-            ullamcorper lectus et. Auctor velit diam fermentum consequat.
-            Feugiat viverra massa urna, volutpat orci imperdiet eget eget.
+            Jessica was wonderful. She listened intently to my needs and desires and executed beautifully. She
+completed everything in a very timely manner and followed up even when I dropped the ball. It was
+so helpful having Jessica create my website because I am a busy mom and don't have time to do
+these things properly. She is also very skilled and knowledgeable in all things tech and web, so I
+knew I was getting the best, most up-to-date and expert service.<br><br>I have already recommended Nakamura Web Services to others, as Jessica is so professional, so kind, and wonderful to work with! I have already secured new clients from sharing my new website, and
+I definitely have Nakamura Web Services to thank for that.
           </p>
           <span class="cs-reviewer">
-            Jane Doe
-            <span class="cs-desc">Homeowner</span>
+            Alysha Higgins
+            <span class="cs-desc">Ma Ha Wellness</span>
           </span>
           <img
             class="cs-item-stars"
@@ -368,7 +370,7 @@ unique needs and budget of nonprofits in Hawaiʻi. Her approach is both professi
             width="96"
             height="16"
           />
-        </li> -->
+        </li>
       </ul>
     <!--  <a aria-label="read more reviews" href="/reviews" class="cs-button-solid"
         >Our Reviews</a
@@ -1229,34 +1231,34 @@ unique needs and budget of nonprofits in Hawaiʻi. Her approach is both professi
         margin: 0 auto clamp(3rem, 5vw, 4rem);
         padding: 0;
         justify-content: center;
-      }
-
-      .cs-item {
-        font-family: 'Merriweather', serif;
-        text-align: left;
-        list-style: none;
-        width: 100%;
-        max-width: (542/16rem);
-        margin: 0 auto (64/16rem);
-        /* Prevents padding from affecting height & width */
-        box-sizing: border-box;
-        /* Padding L & R - 16px - 32px */
-        padding: (60/16rem) clamp(1rem, 3.2vw, 2rem) 0;
-        /* 32px - 40px */
-        padding-bottom: clamp(2rem, 5.4vw, 2.5rem);
-        background: #fff;
-        box-shadow: 0px 20px 39px 0px rgba(0, 0, 0, 0.05);
-        border-radius: (4/16rem);
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        position: relative;
-
-        &:last-of-type {
-          margin-bottom: 0;
-        }
+      flex-direction: column; /* Stack vertically on mobile */
+      align-items: center;
       }
+
+  .cs-item {
+      font-family: 'Merriweather', serif;
+      text-align: left;
+      list-style: none;
+      width: 100%;
+      max-width: (542/16rem);
+      min-height: (450/16rem); /* Set minimum height */
+      margin: 0 auto (64/16rem);
+      box-sizing: border-box;
+      padding: (60/16rem) clamp(1rem, 3.2vw, 2rem) 0;
+      padding-bottom: clamp(2rem, 5.4vw, 2.5rem);
+      background: #fff;
+      box-shadow: 0px 20px 39px 0px rgba(0, 0, 0, 0.05);
+      border-radius: (4/16rem);
+      display: flex;
+      flex-direction: column; /* Stack content vertically */
+      justify-content: space-between; /* Distribute space evenly */
+      position: relative;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
 
       .cs-item-img {
         width: (80/16rem);
@@ -1272,6 +1274,7 @@ unique needs and budget of nonprofits in Hawaiʻi. Her approach is both professi
         padding-bottom: (20/16rem);
         color: var(--bodyTextColor);
         border-bottom: 1px solid #e8e9ec;
+         flex-grow: 1;
       }
 
       .cs-reviewer {
@@ -1304,16 +1307,18 @@ unique needs and budget of nonprofits in Hawaiʻi. Her approach is both professi
   @media only screen and (min-width: 48em) {
     #reviews {
       .cs-card-group {
-        display: flex;
-        /* justify-content: space-between; */
-        justify-content: center;
-        align-items: center;
-        gap: (16/16rem);
-      }
+      display: flex;
+      flex-direction: row; /* Side by side on tablet+ */
+      justify-content: center;
+      align-items: stretch; /* This is key - makes cards same height */
+      gap: (16/16rem);
+    }
 
       .cs-item {
         /* reset margin so it won't interfere with flexbox */
         margin: 0;
+        flex: 1; /* Makes cards equal width */
+      max-width: none; /* Remove max-width restriction */
       }
     }
   }
