@@ -44,21 +44,57 @@ const optimizedImage = await getOptimizedImage(landingImage)
     </div>
 </section>
 
+<!-- ============================================ -->
+<!--                Side By Side                  -->
+<!-- ============================================ -->
+
+<section id="sbs-1006">
+    <div class="cs-container">
+        <div class="cs-image-group">
+           <span class="cs-topper"><em>Nonprofit director turned web developer specializing in beautiful, functional custom web pages, projects, and apps.</em></span>
+            <h2 class="cs-title">Aloha kākou! I'm Jessica Nakamura, a freelance web developer in Kahului, Maui.</h2>
+            <picture class="cs-picture">
+                <!--Desktop-->
+                <source media="(min-width: 1024px)" srcset="/assets/images/dark-headshot.png">
+                <!--Tablet-->
+                <source media="(min-width: 601px)" srcset="/assets/images/dark-headshot.png">
+                <!--Mobile-->
+                <source media="(max-width: 600px)" srcset="/assets/images/dark-headshot.png">
+                <img loading="lazy" decoding="async" src="/assets/images/dark-headshot.png" alt="beef" width="522" height="461" aria-hidden="true">
+            </picture>
+        </div>
+        <div class="cs-content">
+           
+            <p class="cs-text">
+                I started Nakamura Web Services in early 2025 after completing KS Kaiāulu’s full stack web and mobile developer bootcamp in partnership with Nucamp, a fast-paced, immersive and hands-on training in modern web development languages, frameworks, and technologies that prepared me to create my own projects and, most importantly, keep learning!<br><br>
+
+Before enrolling in KS Kaiāulu’s developer bootcamp, I spent a decade working in the nonprofit sector, from public libraries and the Head Start program to affordable housing and financial literacy. I was a first-generation college student, studying social science at community college before completing a BA in interdisciplinary studies at CIIS. Those experiences shape how I approach development work today: with care, curiosity, and a strong sense of service to the community.
+                <!--Creates the space between p tags on mobile-->
+                <span class="cs-spacer"></span>
+                As a freelancer, my goal is to collaborate with nonprofits, educators, small businesses, and changemakers who are working to build something meaningful. I especially value projects rooted in justice, equity, and local impact. Whether I’m creating a website or a custom tool, I want the end result to be intuitive, visually clean, function beautifully, and feel effortless, inviting joy in their everyday use.<br><br>
+
+I’ve been building websites, learning new tech, and experimenting with digital tools since the days of AOL and dial-up. Now, I’m excited to use those lifelong skills to serve the Hawaiʻi community with intention, heart, and aloha.
+            </p>
+            <a href="/contact" class="cs-button-solid">Work with Me</a>
+        </div>
+    </div>
+</section>
+
 
 <!-- ============================================ -->
 <!--             Side By Side Reverse             -->
 <!-- ============================================ -->
 
-<section id="sbsr-1011">
+<!-- <section id="sbsr-1011">
     <div class="cs-container">
         <div class="cs-image-group">
-            <picture class="cs-picture">
+            <picture class="cs-picture"> -->
                 <!--Desktop-->
-                <source media="(min-width: 1024px)" srcset="/assets/images/JessicaNakamura.png">
+                <!-- <source media="(min-width: 1024px)" srcset="/assets/images/JessicaNakamura.png"> -->
                 <!--Tablet-->
-                <source media="(min-width: 601px)" srcset="/assets/images/JessicaNakamura.png">
+                <!-- <source media="(min-width: 601px)" srcset="/assets/images/JessicaNakamura.png"> -->
                 <!--Mobile-->
-                <source media="(max-width: 600px)" srcset="/assets/images/JessicaNakamura.png">
+                <!-- <source media="(max-width: 600px)" srcset="/assets/images/JessicaNakamura.png">
                 <img loading="lazy" decoding="async" src="/assets/images/JessicaNakamura.png" alt="Jessica Nakamura, Hawai'i Web Developer" width="522" height="461">
             </picture>
         </div>
@@ -66,11 +102,11 @@ const optimizedImage = await getOptimizedImage(landingImage)
             <h2 class="cs-title">About Jessica Nakamura</h2>
             <span class="cs-subtitle"><em>Nonprofit director turned web developer specializing in beautiful, functional custom web pages, projects, and apps.</em></span>
             <p class="cs-text">
-                Jessica is of mixed Filipina ancestry and grew up in Pennsylvania as the oldest of six. She became a first-generation college student, studying social science at her local community college and going on to complete a Bachelor of Arts at the California Institute of Integral Studies. In 2015, Jessica enrolled in a work exchange program that brought her to Lahaina on the island of Maui. Jessica has spent the majority of her career working in various nonprofit services, including public libraries, the Head Start program, affordable housing, and financial literacy.
+                Jessica is of mixed Filipina ancestry and grew up in Pennsylvania as the oldest of six. She became a first-generation college student, studying social science at her local community college and going on to complete a Bachelor of Arts at the California Institute of Integral Studies. In 2015, Jessica enrolled in a work exchange program that brought her to Lahaina on the island of Maui. Jessica has spent the majority of her career working in various nonprofit services, including public libraries, the Head Start program, affordable housing, and financial literacy. -->
                 <!--Creates the space between p tags on mobile-->
-                <span class="cs-spacer"></span>
+                <!-- <span class="cs-spacer"></span>
                 She has a deep commitment to people, community, equity, and education, which she now combines with her love of web development to create websites, online platforms, mobile apps, and tools that serve the greater good. Jessica has been building websites, publishing newsletters, and learning new computer things since her family got their first PC in the 1990s. In 2024, she decided to turn her skills and passions into self-employment and launched Nakamura Web Services. She looks forward to serving the Hawai'i community for many years to come!
-            </p>
+            </p> -->
             <!-- Replace the existing subtitle span with this: -->
 <div class="cs-subtitle animated-words" style="margin: 1rem; font-size: 1.2rem;">
     <strong>
@@ -79,10 +115,10 @@ const optimizedImage = await getOptimizedImage(landingImage)
         <span class="animate-word">Inspire.</span>
     </strong>
 </div>
-        </div>
+        <!-- </div>
         
     </div>
-</section>
+</section> -->
                                 
 
 <!-- ============================================ -->
@@ -622,150 +658,112 @@ I definitely have Nakamura Web Services to thank for that.
 
   /* PAGE-SPECIFIC STYLES FOR THE HOME PAGE */
 
-
 /*-- -------------------------- -->
-<---    Side By Side Reverse    -->
+<---       Side By Side         -->
 <--- -------------------------- -*/
+
+ #sbs-1006 {
+  background-color: rgba(8, 97, 115, 0.9);
+ }
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-    #sbsr-1011 {
+    #sbs-1006 {
         padding: var(--sectionPadding);
-        background-color: #086173;
 
         .cs-container {
             width: 100%;
+            /* changes to 1280px at desktop */
             max-width: (800/16rem);
             margin: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
+            /* 48px - 64px */
             gap: clamp(3rem, 6vw, 4rem);
         }
 
-        .cs-image-group {
-            width: 100%;
-            max-width: (300/16rem); /* Reduced size */
-            display: flex;
-            justify-content: center;
-            order: 1;
-        }
-
-        .cs-picture {
-            width: 100%;
-            height: auto;
-            display: block;
-            position: relative;
-            
-            img {
-                /* Critical change: Remove absolute positioning */
-                position: static;
-                display: block;
-                width: 100%;
-                height: auto;
-                object-fit: contain;
-            }
-        }
-
         .cs-content {
-            text-align: center;
+            /* set text align to left if content needs to be left aligned */
+            text-align: left;
             width: 100%;
-            max-width: (700/16rem);
-            margin-top: 0;
+            /* changes to 522px at desktop */
+            max-width: (578/16rem);
+            margin-top: (-16/16rem);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            order: 2;
-        }
-
-        .cs-title,
-        .cs-text {
-            color: var(--bodyTextColorWhite);
-        }
-
-        .cs-title {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: (1.5/16rem);
-
-            &::after {
-                content: "";
-                display: block;
-                width: (3rem); /* 3rem wide divider */
-                height: 3px; /* 3px thick */
-                background-color: white;
-                margin: 1rem auto;
-            }
-        }
-
-        .cs-subtitle {
-             /* Inherit all the cs-text styles from root.less */
-    font-family: "Merriweather", serif;
-    font-size: var(--bodyFontSize);
-    line-height: 1.5em;
-    width: 100%;
-    margin-bottom: 2rem;
-    
-    /* Override only what's needed to make it centered and fit the design */
-    text-align: center;
-    color: var(--bodyTextColorWhite);
-    max-width: (600/16rem);
-    margin-bottom: 2rem;
-    opacity: 0.9;
-    display: block;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: flex-start;
         }
 
         .cs-text {
+            color: rgba(255, 255, 255, 0.85);
             margin-bottom: (16/16rem);
-            opacity: 0.8;
-            text-align: left;
             &:last-of-type {
                 margin-bottom: (32/16rem);
             }
         }
 
+        .cs-topper {
+            text-transform: none;
+            /* Keep original color - don't change */
+        }
+
+        .cs-title {
+            color: rgba(255, 255, 255, 0.8);
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+
         .cs-spacer {
             width: 100%;
+            /* 16px - 24px */
             height: clamp(1rem, 3vw, 1.5rem);
             display: block;
+        }
+
+        .cs-image-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+        }
+
+        .cs-picture {
+            width: 100%;
+            aspect-ratio: 542 / 460;
+            border: 10px solid #fff;
+            background-color: #000000;
+            display: block;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            position: relative;
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                /* makes it behave like a background image */
+                object-fit: cover;
+                object-position: center 15%;
+            }
         }
     }
 }
 
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
-    #sbsr-1011 {
+    #sbs-1006 {
         .cs-container {
-            align-items: center;
-            max-width: (900/16rem);
-            flex-direction: column;
+            align-items: flex-start;
         }
-
-        .cs-image-group {
-            max-width: (350/16rem); /* Reduced size */
-            order: 1;
-        }
-
-        .cs-content {
-            max-width: (800/16rem);
-            order: 2;
+        .cs-flex-group {
+            flex-direction: row;
         }
 
         .cs-text {
             columns: 2;
             column-gap: (24/16rem);
-        }
-
-         .cs-title {
-            &::after {
-                width: 4rem; /* Slightly wider on tablet */
-                margin: 2rem auto;
-            }
-        }
-
-        .cs-subtitle {
-          margin-top: -1rem;
-          margin-bottom: 3rem;
         }
 
         .cs-spacer {
@@ -776,48 +774,35 @@ I definitely have Nakamura Web Services to thank for that.
 
 /* Small Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
-    #sbsr-1011 {
+    #sbs-1006 {
         .cs-container {
             max-width: (1280/16rem);
-            flex-direction: column;
-            justify-content: center;
+            flex-direction: row;
+            justify-content: flex-start;
             align-items: center;
-            gap: clamp(3rem, 6vw, 4rem);
+            /* 100px - 200px */
+            gap: clamp(6.25rem, 13vw, 12.5rem);
         }
 
         .cs-image-group {
-            max-width: (400/16rem); /* Reduced size */
+            max-width: (542/16rem);
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             position: relative;
-            order: 1;
+        }
+
+        .cs-picture {
+            aspect-ratio: 542 / 460;
         }
 
         .cs-content {
             flex: none;
-            width: 100%;
-            max-width: (900/16rem);
-            order: 2;
-        }
-        
-        .cs-text {
-            columns: 2;
-            column-gap: (40/16rem);
-        }
-
-        .cs-title {
-        margin-top: -1rem;
-        margin-bottom: 2rem;
-      }
-
-      .cs-title {
-            &::after {
-                width: 5rem; /* Wider on desktop */
-                margin: 2rem auto;
-            }
+            width: 54%;
+            max-width: (542/16rem);
         }
     }
 }
+
 
 /*-- -------------------------- -->
 <---          Services          -->
