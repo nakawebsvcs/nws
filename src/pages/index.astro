@@ -81,44 +81,14 @@ I’ve been building websites, learning new tech, and experimenting with digital
 </section>
 
 
-<!-- ============================================ -->
-<!--             Side By Side Reverse             -->
-<!-- ============================================ -->
-
-<!-- <section id="sbsr-1011">
-    <div class="cs-container">
-        <div class="cs-image-group">
-            <picture class="cs-picture"> -->
-                <!--Desktop-->
-                <!-- <source media="(min-width: 1024px)" srcset="/assets/images/JessicaNakamura.png"> -->
-                <!--Tablet-->
-                <!-- <source media="(min-width: 601px)" srcset="/assets/images/JessicaNakamura.png"> -->
-                <!--Mobile-->
-                <!-- <source media="(max-width: 600px)" srcset="/assets/images/JessicaNakamura.png">
-                <img loading="lazy" decoding="async" src="/assets/images/JessicaNakamura.png" alt="Jessica Nakamura, Hawai'i Web Developer" width="522" height="461">
-            </picture>
-        </div>
-        <div class="cs-content">
-            <h2 class="cs-title">About Jessica Nakamura</h2>
-            <span class="cs-subtitle"><em>Nonprofit director turned web developer specializing in beautiful, functional custom web pages, projects, and apps.</em></span>
-            <p class="cs-text">
-                Jessica is of mixed Filipina ancestry and grew up in Pennsylvania as the oldest of six. She became a first-generation college student, studying social science at her local community college and going on to complete a Bachelor of Arts at the California Institute of Integral Studies. In 2015, Jessica enrolled in a work exchange program that brought her to Lahaina on the island of Maui. Jessica has spent the majority of her career working in various nonprofit services, including public libraries, the Head Start program, affordable housing, and financial literacy. -->
-                <!--Creates the space between p tags on mobile-->
-                <!-- <span class="cs-spacer"></span>
-                She has a deep commitment to people, community, equity, and education, which she now combines with her love of web development to create websites, online platforms, mobile apps, and tools that serve the greater good. Jessica has been building websites, publishing newsletters, and learning new computer things since her family got their first PC in the 1990s. In 2024, she decided to turn her skills and passions into self-employment and launched Nakamura Web Services. She looks forward to serving the Hawai'i community for many years to come!
-            </p> -->
-            <!-- Replace the existing subtitle span with this: -->
+<!-- 
 <div class="cs-subtitle animated-words" style="margin: 1rem; font-size: 1.2rem;">
     <strong>
         <span class="animate-word">Educate.</span>
         <span class="animate-word">Connect.</span>
         <span class="animate-word">Inspire.</span>
     </strong>
-</div>
-        <!-- </div>
-        
-    </div>
-</section> -->
+  </div> -->
                                 
 
 <!-- ============================================ -->
@@ -183,7 +153,7 @@ I’ve been building websites, learning new tech, and experimenting with digital
       <h2 class="cs-title" style="opacity: 90%;">Download my product and pricing sheet! >>></h2></a>
        <div class="cs-button-container">
             <a href="/assets/NWS-Products-Pricing.pdf" target="_blank" class="cs-button-solid">View Products & Pricing</a>
-            <img src="/assets/images/Hosting Packages.png" style="width: 80%; margin-top: 2.5rem;">
+             <a href="/assets/NWS-Products-Pricing.pdf" target="_blank"><img src="/assets/images/Hosting Packages.png" style="width: 80%; margin-top: 2.5rem;"></a>
         </div>
     </div>
     <div class="cs-flex-group">
@@ -732,7 +702,7 @@ I definitely have Nakamura Web Services to thank for that.
             width: 100%;
             aspect-ratio: 542 / 460;
             border: 10px solid #fff;
-            background-color: #000000;
+            background-color: #fff;
             display: block;
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
             position: relative;
@@ -1014,6 +984,16 @@ I definitely have Nakamura Web Services to thank for that.
     }
   }
      }
+
+     .cs-button-container {
+      img {
+        transition: transform 0.3s ease;
+        
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
 
       .cs-item-text {
         /* 14px - 16px */
