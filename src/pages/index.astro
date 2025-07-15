@@ -55,12 +55,12 @@ const optimizedImage = await getOptimizedImage(landingImage)
             <h2 class="cs-title">Aloha kākou! I'm Jessica Nakamura, a freelance web developer in Kahului, Maui.</h2>
             <picture class="cs-picture">
                 <!--Desktop-->
-                <source media="(min-width: 1024px)" srcset="/assets/images/dark-headshot.png">
+                <source media="(min-width: 1024px)" srcset="/assets/images/new-headshot.jpeg">
                 <!--Tablet-->
-                <source media="(min-width: 601px)" srcset="/assets/images/dark-headshot.png">
+                <source media="(min-width: 601px)" srcset="/assets/images/new-headshot.jpeg">
                 <!--Mobile-->
-                <source media="(max-width: 600px)" srcset="/assets/images/dark-headshot.png">
-                <img loading="lazy" decoding="async" src="/assets/images/dark-headshot.png" alt="beef" width="522" height="461" aria-hidden="true">
+                <source media="(max-width: 600px)" srcset="/assets/images/new-headshot.jpeg">
+                <img loading="lazy" decoding="async" src="/assets/images/new-headshot.jpeg" alt="jessica nakamura, web developer" width="522" height="461" aria-hidden="true">
             </picture>
         </div>
         <div class="cs-content">
@@ -709,13 +709,14 @@ I definitely have Nakamura Web Services to thank for that.
 
             img {
                 position: absolute;
+                filter: brightness(1.2);
                 top: 0;
                 left: 0;
                 height: 100%;
                 width: 100%;
                 /* makes it behave like a background image */
                 object-fit: cover;
-                object-position: center 15%;
+                object-position: center 22%;
             }
         }
     }
