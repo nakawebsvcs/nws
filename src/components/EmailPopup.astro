@@ -2,7 +2,7 @@
     <div class="popup-content">
         <button id="close-popup" class="close-popup" aria-label="Close popup">&times;</button>
         <h2 id="popup-heading" class="cs-title">Making Websites Make Sense for Non-Techy Humans</h2>
-        <p>Demystify some of the technical terms you need to know when working with a web developer. Get your free one-page download!</p>
+        <p class="cs-text">Demystify some of the technical terms you need to know when working with a web developer. Get your free one-page download!</p>
 <img class="cs-picture" src="/assets/images/one-page-preview.png" alt="Download preview">
         <form id="email-form" action="https://304047bf.sibforms.com/serve/MUIFADIfk4G96V1pWeBDOb-j3anC7WNOYfXzc0wZChF7NU5S0ucHAYp6zxTODPjIh4mDfezFWsZNF1nSGS3GdxwZc32uJhGtbYJPP9CmVetSdBLMaky7XClNQF230srAMtOlVoRBG1KcJQBDdll0kiuiXjlfQuEQtYAZqptq_jhuMSQvImA8uN-O_i32f6RYifAWeEB-WmGtX0B8zQ==" method="POST">
             <label for="name-input" class="sr-only">First Name</label>
@@ -50,9 +50,14 @@
 }
 
 .cs-title {
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 1vw, 1.2rem);
     text-align: center;
     margin-bottom: 1rem;
+}
+
+.cs-text { 
+    font-size: clamp(1rem, 1vw, 1.2rem);
+    line-height: 1.5;
 }
 
 .cs-picture {
@@ -109,6 +114,37 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
+}
+
+@media (max-width: 480px) {
+    .email-popup {
+        padding: 1.5rem 1rem;
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: 100%;
+    }
+
+    .popup-content {
+        padding-top: 0.5rem;
+    }
+
+    .cs-title {
+        font-size: 1.1rem;
+    }
+
+    .cs-text {
+        font-size: 0.9rem;
+    }
+
+    .cs-picture {
+        max-width: 30%;
+    }
+
+    .close-popup {
+        top: -5px;
+        right: -5px;
+    }
 }
 </style>
 
