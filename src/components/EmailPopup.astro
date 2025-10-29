@@ -1,0 +1,190 @@
+<div id="email-popup" class="email-popup" role="dialog" aria-modal="true" aria-labelledby="popup-heading" hidden>
+    <div class="popup-content">
+        <button id="close-popup" class="close-popup" aria-label="Close popup">&times;</button>
+        <h2 id="popup-heading" class="cs-title">Making Websites Make Sense for Non-Techy Humans</h2>
+        <p>Demystify some of the technical terms you need to know when working with a web developer. Get your free one-page download!</p>
+<img class="cs-picture" src="/assets/images/one-page-preview.png" alt="Download preview">
+        <form id="email-form" action="https://304047bf.sibforms.com/serve/MUIFADIfk4G96V1pWeBDOb-j3anC7WNOYfXzc0wZChF7NU5S0ucHAYp6zxTODPjIh4mDfezFWsZNF1nSGS3GdxwZc32uJhGtbYJPP9CmVetSdBLMaky7XClNQF230srAMtOlVoRBG1KcJQBDdll0kiuiXjlfQuEQtYAZqptq_jhuMSQvImA8uN-O_i32f6RYifAWeEB-WmGtX0B8zQ==" method="POST">
+            <label for="name-input" class="sr-only">First Name</label>
+            <input type="text" id="name-input" name="FIRSTNAME" placeholder="First name" required>
+            <label for="email-input" class="sr-only">Email Address</label>
+            <input type="email" id="email-input" name="EMAIL" placeholder="Email" required>
+
+            <!-- HIDDEN FIELDS: -->
+            <input type="text" name="email_address_check" value="" style="display: none;">
+            <input type="hidden" name="locale" value="en">
+            <input type="hidden" name="html_type" value="simple">
+
+            <!-- Button -->
+            <button type="submit" class="cs-button-solid">Submit</button>
+            <p id="form-feedback" class="form-feedback"></p>
+        </form>
+    </div>
+</div>
+
+<style lang="less">
+    .email-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 2rem;
+    z-index: 1000;
+    max-width: 400px;
+    transform: translateY(200%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.email-popup.visible {
+    transform: translateY(0);
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+}
+
+.cs-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.cs-picture {
+    max-width: 40%;
+    height: auto;
+    margin-bottom: 1rem;
+    align-self: center;
+}
+
+.close-popup {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+    line-height: 1;
+}
+
+#popup-heading {
+    margin-bottom: 0;
+}
+
+#email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#email-input, #name-input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-feedback {
+    text-align: center;
+    min-height: 1em;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: var(--bodyTextColor);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const popup = document.getElementById('email-popup');
+        const closeButton = document.getElementById('close-popup');
+        const emailForm = document.getElementById('email-form');
+        const formFeedback = document.getElementById('form-feedback'); // <-- ADD THIS
+
+        if (!popup) return;
+
+        const showPopup = () => {
+            if (sessionStorage.getItem('popupShown')) return;
+            popup.hidden = false;
+            setTimeout(() => {
+                popup.classList.add('visible');
+                sessionStorage.setItem('popupShown', 'true');
+            }, 10); 
+        };
+
+        const hidePopup = () => {
+            popup.classList.remove('visible');
+            setTimeout(() => {
+                popup.hidden = true;
+            }, 500);
+        };
+
+        // Show popup after 4 seconds
+        setTimeout(showPopup, 4000);
+
+        // Close button functionality
+        if (closeButton) {
+            closeButton.addEventListener('click', hidePopup);
+        }
+
+        // Close when clicking outside the popup
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                hidePopup();
+            }
+        });
+
+       // Form submission
+        if (emailForm) {
+            emailForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const submitButton = emailForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                
+                // Show loading state
+                submitButton.textContent = 'Submitting...';
+                submitButton.disabled = true;
+                formFeedback.textContent = '';
+                
+                try {
+                    const formData = new FormData(emailForm);
+                    await fetch(emailForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        mode: 'no-cors' // Prevent CORS errors
+                    });
+                    
+                    // Assume success in 'no-cors' mode
+                    formFeedback.textContent = '✓ Success! Check your inbox.';
+                    submitButton.textContent = 'Thank you!';
+                    setTimeout(hidePopup, 2000);
+
+                } catch (error) {
+                    // This will now only catch actual network errors (e.g., no internet)
+                    formFeedback.textContent = 'Network error. Please check connection.';
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }
+            });
+        }
+    });
+</script>
