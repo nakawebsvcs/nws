@@ -51,16 +51,16 @@ const optimizedImage = await getOptimizedImage(landingImage)
 <section id="sbs-1006">
     <div class="cs-container">
         <div class="cs-image-group">
-           <span class="cs-topper"><em>Nonprofit director turned web developer specializing in beautiful, functional custom web pages, projects, and apps.</em></span>
+           <span class="cs-topper"><em>Web developer specializing in beautiful, functional custom web pages, projects, and apps.</em></span>
             <h2 class="cs-title">Aloha kākou! I'm Jessica Nakamura, a freelance web developer in Kahului, Maui.</h2>
             <picture class="cs-picture">
                 <!--Desktop-->
-                <source media="(min-width: 1024px)" srcset="/assets/images/new-headshot.jpeg">
+                <source media="(min-width: 1024px)" srcset="/assets/images/new-headshot.png">
                 <!--Tablet-->
-                <source media="(min-width: 601px)" srcset="/assets/images/new-headshot.jpeg">
+                <source media="(min-width: 601px)" srcset="/assets/images/new-headshot.png">
                 <!--Mobile-->
-                <source media="(max-width: 600px)" srcset="/assets/images/new-headshot.jpeg">
-                <img loading="lazy" decoding="async" src="/assets/images/new-headshot.jpeg" alt="jessica nakamura, web developer" width="522" height="461" aria-hidden="true">
+                <source media="(max-width: 600px)" srcset="/assets/images/new-headshot.png">
+                <img loading="lazy" decoding="async" src="/assets/images/new-headshot.png" alt="jessica nakamura, web developer" width="522" height="461" aria-hidden="true">
             </picture>
         </div>
         <div class="cs-content">
@@ -741,7 +741,7 @@ I definitely have Nakamura Web Services to thank for that.
 
         .cs-topper {
             text-transform: none;
-            /* Keep original color - don't change */
+            font-size: clamp(1.25rem, 4vw, 1.5rem);
         }
 
         .cs-title {
@@ -759,13 +759,14 @@ I definitely have Nakamura Web Services to thank for that.
 
         .cs-image-group {
             width: 100%;
+            max-width: 400px;
             display: flex;
             flex-direction: column; /* Stack elements vertically */
         }
 
         .cs-picture {
-            width: 100%;
-            aspect-ratio: 542 / 460;
+            width: 80%;
+            aspect-ratio: 542 / 670;
             border: 10px solid #fff;
             background-color: #fff;
             display: block;
@@ -774,7 +775,6 @@ I definitely have Nakamura Web Services to thank for that.
 
             img {
                 position: absolute;
-                filter: brightness(1.2);
                 top: 0;
                 left: 0;
                 height: 100%;
@@ -787,23 +787,54 @@ I definitely have Nakamura Web Services to thank for that.
     }
 }
 
-/* Tablet - 768px */
-@media only screen and (min-width: 48rem) {
+/* Tablet - 768px to 1023px */
+@media only screen and (min-width: 48rem) and (max-width: 63.9375rem) {
     #sbs-1006 {
         .cs-container {
-            align-items: flex-start;
+            align-items: center;
+            text-align: center;
         }
-        .cs-flex-group {
-            flex-direction: row;
+        
+        .cs-image-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 100%;
+        }
+        
+        .cs-picture {
+            width: 60%;
+            margin: 0 auto;
+        }
+        
+        .cs-content {
+            text-align: center;
+            align-items: center;
         }
 
         .cs-text {
             columns: 2;
             column-gap: (24/16rem);
+            text-align: left;
+        }
+        
+        .cs-topper {
+            display: block;
+            text-align: center;
+            max-width: 70%;
+        }
+        
+        .cs-title {
+            text-align: center;
+            max-width: 65%;
         }
 
         .cs-spacer {
             display: none;
+        }
+        
+        .cs-button-solid {
+            margin: 0 auto;
         }
     }
 }
@@ -828,7 +859,9 @@ I definitely have Nakamura Web Services to thank for that.
         }
 
         .cs-picture {
-            aspect-ratio: 542 / 460;
+            aspect-ratio: 542 / 670;
+            width: 70%;
+            margin: 0 auto;
         }
 
         .cs-content {
