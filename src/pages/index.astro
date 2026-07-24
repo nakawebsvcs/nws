@@ -147,15 +147,14 @@ Before going full time as a developer, I spent a decade working in the nonprofit
 <section id="faq-1741">
   <div class="cs-container">
     <div class="cs-content">
-      <a href="/assets/NWS-Products-Pricing.pdf" target="_blank" style="text-decoration: none;">
-      <h2 class="cs-title" style="opacity: 90%;">Download my product and pricing sheet! >>></h2></a>
+      <h2 class="cs-title" style="opacity: 90%;">Download my product and pricing sheet! >>></h2>
        <div class="cs-button-container">
             <a href="/assets/NWS-Products-Pricing.pdf" target="_blank" class="cs-button-solid">View Products & Pricing</a>
-             <a href="/assets/NWS-Products-Pricing.pdf" target="_blank"><img src="/assets/images/Hosting Packages.png" style="width: 80%; margin-top: 2.5rem;"></a>
+             <img src="/assets/images/Hosting Packages.png" id="hosting-packages-img" style="width: 80%; margin-top: 2.5rem; cursor: pointer;">
         </div>
     </div>
     <div class="cs-flex-group">
-     <a href="/assets/NWS-Products-Pricing.pdf" target="_blank"><img src="/assets/images/products-pricing-screenshot.png" style="width: 75%"></a>
+     <img src="/assets/images/products-pricing-screenshot.png" id="products-pricing-img" style="width: 75%; cursor: pointer;">
   </div>
 </section>
 
@@ -611,6 +610,18 @@ I definitely have Nakamura Web Services to thank for that.
 <div id="badge-lightbox" class="lightbox">
   <span class="lightbox-close">&times;</span>
   <img class="lightbox-content" id="lightbox-img" src="/assets/images/nucamp-badge.png" alt="Nucamp Coding Bootcamp Badge">
+</div>
+
+<!-- Lightbox for Hosting Packages Image -->
+<div id="hosting-lightbox" class="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-content" src="/assets/images/Hosting Packages.png" alt="Hosting Packages">
+</div>
+
+<!-- Lightbox for Products & Pricing Screenshot -->
+<div id="pricing-lightbox" class="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-content" src="/assets/images/products-pricing-screenshot.png" alt="Products & Pricing">
 </div>
 
 </BaseLayout>
@@ -1478,7 +1489,11 @@ I definitely have Nakamura Web Services to thank for that.
         flex-direction: row;
         align-items: flex-start;
         justify-content: center;
-        gap: (40/16rem);
+        gap: (80/16rem); /* Gap between items - adjust this value */
+      }
+
+      @media only screen and (min-width: 64rem) {
+        gap: (120/16rem); /* Larger gap on desktop - adjust this value */
       }
     }
 
@@ -1487,8 +1502,8 @@ I definitely have Nakamura Web Services to thank for that.
       text-align: center;
 
       @media only screen and (min-width: 48rem) {
-        flex: 0 0 auto; /* Don't grow, don't shrink, use auto width */
-        width: (200/16rem); /* Fixed width for columns */
+        flex: 0 0 auto;
+        width: auto; /* Let content determine width */
       }
     }
 
@@ -1853,6 +1868,12 @@ I definitely have Nakamura Web Services to thank for that.
     animation: zoomIn 0.3s ease;
   }
 
+  /* Larger size for product/pricing images */
+  #hosting-lightbox .lightbox-content,
+  #pricing-lightbox .lightbox-content {
+    max-width: (720/16rem); /* 20% larger than default 600px */
+  }
+
   @keyframes zoomIn {
     from { transform: scale(0.7); }
     to { transform: scale(1); }
@@ -2093,41 +2114,54 @@ document.addEventListener('astro:page-load', animateHero);
 </script>
 
 <script is:inline>
-  // Lightbox functionality for Nucamp badge
+  // Lightbox functionality
   function initLightbox() {
-    const badge = document.getElementById('nucamp-badge');
-    const lightbox = document.getElementById('badge-lightbox');
-    const closeBtn = document.querySelector('.lightbox-close');
+    // Helper function to set up a lightbox
+    function setupLightbox(triggerId, lightboxId) {
+      const trigger = document.getElementById(triggerId);
+      const lightbox = document.getElementById(lightboxId);
+      const closeBtn = lightbox ? lightbox.querySelector('.lightbox-close') : null;
 
-    if (badge && lightbox && closeBtn) {
-      // Open lightbox when badge is clicked
-      badge.addEventListener('click', function() {
-        lightbox.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-      });
+      if (trigger && lightbox && closeBtn) {
+        // Open lightbox when trigger is clicked
+        trigger.addEventListener('click', function() {
+          lightbox.style.display = 'block';
+          document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
 
-      // Close lightbox when X is clicked
-      closeBtn.addEventListener('click', function() {
-        lightbox.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Re-enable scrolling
-      });
-
-      // Close lightbox when clicking outside the image
-      lightbox.addEventListener('click', function(event) {
-        if (event.target === lightbox) {
+        // Close lightbox when X is clicked
+        closeBtn.addEventListener('click', function() {
           lightbox.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }
-      });
+          document.body.style.overflow = 'auto'; // Re-enable scrolling
+        });
 
-      // Close lightbox with Escape key
-      document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && lightbox.style.display === 'block') {
-          lightbox.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }
-      });
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', function(event) {
+          if (event.target === lightbox) {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+          }
+        });
+      }
     }
+
+    // Set up all lightboxes
+    setupLightbox('nucamp-badge', 'badge-lightbox');
+    setupLightbox('hosting-packages-img', 'hosting-lightbox');
+    setupLightbox('products-pricing-img', 'pricing-lightbox');
+
+    // Global Escape key handler for all lightboxes
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const lightboxes = document.querySelectorAll('.lightbox');
+        lightboxes.forEach(function(lightbox) {
+          if (lightbox.style.display === 'block') {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+          }
+        });
+      }
+    });
   }
 
   // Run on initial page load
